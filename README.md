@@ -15,6 +15,10 @@ Music player with general media controls. Plays local music files and displays i
   - Year
   - Album Cover
   
+### Current TODO
+- Add Mute/Unmute
+- Add Volume Slider
+
 ### Future Updates
 - Music Visualizers
 - EQ Editors
