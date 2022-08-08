@@ -18,6 +18,7 @@ Music player with general media controls. Plays local music files and displays i
 ### Current TODO
 - Add Mute/Unmute
 - Add Volume Slider
+- Create separate music data object file for more organization
 
 ### Future Updates
 - Music Visualizers
