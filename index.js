@@ -194,7 +194,7 @@ playBtn.addEventListener("click", () => {
 
 function shuffleSongs() {
   shuffle = !shuffle;
-  shuffleBtn.style.color = shuffle == true ? "black" : "#dfdbdf";
+  shuffleBtn.style.color = shuffle == true ? "cyan" : "#ddd1e0";
 }
 
 // ) is off, 1 is repeat, and 2 is repeat-1
@@ -206,9 +206,9 @@ function repeatSongs() {
   }
 
   if (repeat == 0) {
-    repeatBtn.style.color = "#dfdbdf";
+    repeatBtn.style.color = "#ddd1e0";
   } else if (repeat == 1) {
-    repeatBtn.style.color = "black";
+    repeatBtn.style.color = "cyan";
   } else {
     repeatBtn.style.color = "red";
   }

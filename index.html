@@ -13,8 +13,6 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <h1>Music Player</h1>
-
     <div class="music-container" id="music-container">
       <div class="music-info">
         <h4 id="title"></h4>
@@ -29,7 +27,11 @@
       <div class="img-container">
         <img src="" alt="music-cover" id="cover" />
       </div>
+      
       <div class="navigation">
+        <button id="shuffle" class="action-btn">
+          <i class="fas fa-shuffle"></i>
+        </button>
         <button id="prev" class="action-btn">
           <i class="fas fa-backward"></i>
         </button>
@@ -41,9 +43,6 @@
         </button>
         <button id="repeat" class="action-btn">
           <i class="fas fa-repeat"></i>
-        </button>
-        <button id="shuffle" class="action-btn">
-          <i class="fas fa-shuffle"></i>
         </button>
       </div>
     </div>
