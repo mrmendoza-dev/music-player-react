@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-# music-player-react
-=======
-# General Music Player
->>>>>>> ac742eedd8bdf58114c210de0f8b67e5c632cca1
 Music player with general media controls. Plays local music files and displays info about the song and shows progess live.
 
 ### Features
