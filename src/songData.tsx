@@ -1,3 +1,6 @@
+import rasputinMp3 from "/src/assets/music/rasputin.mp3";
+import rasputinImg from "/src/assets/album_covers/rasputin.jpg";
+
 const songData: any[] = [
   {
     id: "rasputin",
@@ -5,8 +8,8 @@ const songData: any[] = [
     artist: "Boney M",
     album: "Nightflight to Venus",
     year: "1978",
-    img: "/src/assets/album_covers/rasputin.jpg",
-    mp3: "/src/assets/music/rasputin.mp3",
+    img: { rasputinImg },
+    mp3: { rasputinMp3 },
   },
   {
     id: "shes-on-fire",
