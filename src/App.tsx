@@ -11,8 +11,16 @@ function App() {
   const [currentSong, setCurrentSong] = useState(songs[songIndex]);
   const [shuffle, setShuffle] = useState(false);
   const [repeat, setRepeat] = useState(false);
-
+  const [favorites, setFavorites] = useState<any>([]);
   
+  const [percentage, setPercentage] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+
+  const audioRef = useRef<any>(null);
+  
+
   useEffect(() => {
     setSongs(songData);
   }, []);
@@ -32,7 +40,6 @@ function App() {
       randomSong();
       return;
     }
-
     if (songIndex === songs.length - 1) {
       setSongIndex(0);
     } else {
@@ -45,7 +52,6 @@ function App() {
       randomSong();
       return;
     }
-
     if (songIndex === 0) {
       setSongIndex(songs.length - 1);
     } else {
@@ -61,14 +67,18 @@ function App() {
     setRepeat((prevFlag) => !prevFlag);
   }
 
+  function addToFavorites(id: any) {
+    let favoritesList = favorites.splice(0)
+    if (favoritesList.includes(id)) {
+      favoritesList = favoritesList.filter((e: any) => e !== id);
+    } else {
+    favoritesList.push(id);
+    }
+    setFavorites(favoritesList);
+  }
 
 
-  const [percentage, setPercentage] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [duration, setDuration] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
 
-  const audioRef = useRef<any>(null);
 
   const onChange = (e: any) => {
     const audio = audioRef.current;
@@ -150,9 +160,17 @@ function App() {
           <p className="song-name">{currentSong.name}</p>
           <p className="song-artist">{currentSong.artist}</p>
         </div>
-        <button className="heart-btn">
-          <i className="fa-regular fa-heart"></i>
-          {/* <i className="fa-solid fa-heart"></i> */}
+        <button
+          className="heart-btn"
+          onClick={() => {
+            addToFavorites(currentSong.id);
+          }}
+        >
+          {favorites.includes(currentSong.id) ? (
+            <i className="fa-solid fa-heart highlighted"></i>
+            ) : (
+            <i className="fa-regular fa-heart"></i>
+          )}
         </button>
       </div>
 

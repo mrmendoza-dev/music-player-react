@@ -12,7 +12,9 @@ function ControlPanel(props: any) {
         className="media-btn"
         onClick={props.toggleShuffle}
         style={
-          props.shuffle ? { color: "var(--clr-accent)" } : { color: "#dfdbdf" }
+          props.shuffle
+            ? { color: "var(--clr-accent)" }
+            : { color: "var(--clr-btn)" }
         }
       >
         <i className="fas fa-shuffle"></i>
@@ -41,7 +43,9 @@ function ControlPanel(props: any) {
         className="media-btn"
         onClick={props.toggleRepeat}
         style={
-          props.repeat ? { color: "var(--clr-accent)" } : { color: "#dfdbdf" }
+          props.repeat
+            ? { color: "var(--clr-accent)" }
+            : { color: "var(--clr-btn)" }
         }
       >
         <i className="fas fa-repeat"></i>

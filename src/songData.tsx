@@ -1,5 +1,8 @@
-import rasputinMp3 from "/src/assets/music/rasputin.mp3";
-import rasputinImg from "/src/assets/album_covers/rasputin.jpg";
+import r1 from "./assets/album_covers/rasputin.jpg";
+import r2 from "./assets/music/rasputin.mp3";
+
+import s1 from "./assets/album_covers/shes-on-fire.jpg";
+import s2 from "./assets/music/shes-on-fire.mp3";
 
 const songData: any[] = [
   {
@@ -8,8 +11,8 @@ const songData: any[] = [
     artist: "Boney M",
     album: "Nightflight to Venus",
     year: "1978",
-    img: { rasputinImg },
-    mp3: { rasputinMp3 },
+    img: r1,
+    mp3: r2,
   },
   {
     id: "shes-on-fire",
@@ -17,8 +20,8 @@ const songData: any[] = [
     artist: "Amy Holland",
     album: "Scarface",
     year: "1983",
-    img: "/src/assets/album_covers/shes-on-fire.jpg",
-    mp3: "/src/assets/music/shes-on-fire.mp3",
+    img: s1,
+    mp3: s2,
   },
   {
     id: "out-of-touch",
@@ -26,8 +29,8 @@ const songData: any[] = [
     artist: "Hall & Oates",
     album: "Big Bam Boom",
     year: "1984",
-    img: "/src/assets/album_covers/out-of-touch.jpg",
-    mp3: "/src/assets/music/out-of-touch.mp3",
+    img: "./src/assets/album_covers/out-of-touch.jpg",
+    mp3: "./src/assets/music/out-of-touch.mp3",
   },
   {
     id: "tears-for-fears",
@@ -35,8 +38,8 @@ const songData: any[] = [
     artist: "Tears for Fears",
     album: "Songs from the Big Chair",
     year: "1985",
-    img: "/src/assets/album_covers/tears-for-fears.jpg",
-    mp3: "/src/assets/music/tears-for-fears.mp3",
+    img: "./src/assets/album_covers/tears-for-fears.jpg",
+    mp3: "./src/assets/music/tears-for-fears.mp3",
   },
   {
     id: "rush-rush",
@@ -44,8 +47,8 @@ const songData: any[] = [
     artist: "Debbie Harry",
     album: "Scarface",
     year: "1983",
-    img: "/src/assets/album_covers/rush-rush.jpg",
-    mp3: "/src/assets/music/rush-rush.mp3",
+    img: "./src/assets/album_covers/rush-rush.jpg",
+    mp3: "./src/assets/music/rush-rush.mp3",
   },
   {
     id: "boys-dont-cry",
@@ -53,8 +56,8 @@ const songData: any[] = [
     artist: "The Cure",
     album: "Boys Don't Cry",
     year: "1978",
-    img: "/src/assets/album_covers/boys-dont-cry.jpg",
-    mp3: "/src/assets/music/boys-dont-cry.mp3",
+    img: "./src/assets/album_covers/boys-dont-cry.jpg",
+    mp3: "./src/assets/music/boys-dont-cry.mp3",
   },
   {
     id: "dont-stop-me-now",
@@ -62,8 +65,8 @@ const songData: any[] = [
     artist: "Queen",
     album: "Jazz",
     year: "1978",
-    img: "/src/assets/album_covers/dont-stop-me-now.jpg",
-    mp3: "/src/assets/music/dont-stop-me-now.mp3",
+    img: "./src/assets/album_covers/dont-stop-me-now.jpg",
+    mp3: "./src/assets/music/dont-stop-me-now.mp3",
   },
   {
     id: "never-gonna-give-you-up",
@@ -71,8 +74,8 @@ const songData: any[] = [
     artist: "Rick Astley",
     album: "Whenever You Need Somebody",
     year: "1987",
-    img: "/src/assets/album_covers/never-gonna-give-you-up.jpg",
-    mp3: "/src/assets/music/never-gonna-give-you-up.mp3",
+    img: "./src/assets/album_covers/never-gonna-give-you-up.jpg",
+    mp3: "./src/assets/music/never-gonna-give-you-up.mp3",
   },
 
   {
@@ -81,8 +84,8 @@ const songData: any[] = [
     artist: "A-ha",
     album: "Hunting High and Low",
     year: "1984",
-    img: "/src/assets/album_covers/take-on-me.jpg",
-    mp3: "/src/assets/music/take-on-me.mp3",
+    img: "./src/assets/album_covers/take-on-me.jpg",
+    mp3: "./src/assets/music/take-on-me.mp3",
   },
   {
     id: "west-end-girls",
@@ -90,8 +93,8 @@ const songData: any[] = [
     artist: "The Pet Shop Boys",
     album: "Please",
     year: "1986",
-    img: "/src/assets/album_covers/west-end-girls.jpg",
-    mp3: "/src/assets/music/west-end-girls.mp3",
+    img: "./src/assets/album_covers/west-end-girls.jpg",
+    mp3: "./src/assets/music/west-end-girls.mp3",
   },
   {
     id: "what-is-love",
@@ -99,8 +102,8 @@ const songData: any[] = [
     artist: "Haddaway",
     album: "The Album",
     year: "1993",
-    img: "/src/assets/album_covers/what-is-love.jpg",
-    mp3: "/src/assets/music/what-is-love.mp3",
+    img: "./src/assets/album_covers/what-is-love.jpg",
+    mp3: "./src/assets/music/what-is-love.mp3",
   },
   {
     id: "where-is-my-mind",
@@ -108,8 +111,8 @@ const songData: any[] = [
     artist: "Pixies",
     album: "Surfer Rosa",
     year: "1988",
-    img: "/src/assets/album_covers/where-is-my-mind.jpg",
-    mp3: "/src/assets/music/where-is-my-mind.mp3",
+    img: "./src/assets/album_covers/where-is-my-mind.jpg",
+    mp3: "./src/assets/music/where-is-my-mind.mp3",
   },
   {
     id: "turn-out-the-night",
@@ -117,8 +120,8 @@ const songData: any[] = [
     artist: "Amy Holland",
     album: "Scarface",
     year: "1983",
-    img: "/src/assets/album_covers/turn-out-the-night.jpg",
-    mp3: "/src/assets/music/turn-out-the-night.mp3",
+    img: "./src/assets/album_covers/turn-out-the-night.jpg",
+    mp3: "./src/assets/music/turn-out-the-night.mp3",
   },
   {
     id: "just-cant-get-enough",
@@ -126,8 +129,8 @@ const songData: any[] = [
     artist: "Depeche Mode",
     album: "Catching Up with Depeche Mode",
     year: "1985",
-    img: "/src/assets/album_covers/just-cant-get-enough.jpg",
-    mp3: "/src/assets/music/just-cant-get-enough.mp3",
+    img: "./src/assets/album_covers/just-cant-get-enough.jpg",
+    mp3: "./src/assets/music/just-cant-get-enough.mp3",
   },
 ];
 

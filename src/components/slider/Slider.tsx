@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect, useLayoutEffect } from "react";
 import "./slider.css";
-import "./thumb.css";
 
 function Slider(props: any) {
   const [position, setPosition] = useState(0);
