@@ -7,6 +7,9 @@ import b2 from "./assets/music/out-of-touch.mp3";
 import c1 from "./assets/album_covers/tears-for-fears.jpg";
 import c2 from "./assets/music/tears-for-fears.mp3";
 
+let test = "x";
+
+
 const songData: any[] = [
   {
     id: "shes-on-fire",

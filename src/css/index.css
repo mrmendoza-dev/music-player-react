@@ -200,10 +200,15 @@ body {
 }
 
 @media(min-width:700px) {
+
+  body {
+        overflow-y: hidden;
+
+  }
   .App {
     width: 550px;
-      height: 800px;
-
+    height: 800px;
+    overflow-y: hidden;
   }
 }
 
