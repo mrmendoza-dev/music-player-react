@@ -1,5 +1,14 @@
 const songData: any[] = [
   {
+    id: "rasputin",
+    name: "Rasputin",
+    artist: "Boney M",
+    album: "Nightflight to Venus",
+    year: "1978",
+    img: "/src/assets/album_covers/rasputin.jpg",
+    mp3: "/src/assets/music/rasputin.mp3",
+  },
+  {
     id: "shes-on-fire",
     name: "She's on Fire",
     artist: "Amy Holland",
@@ -62,15 +71,7 @@ const songData: any[] = [
     img: "/src/assets/album_covers/never-gonna-give-you-up.jpg",
     mp3: "/src/assets/music/never-gonna-give-you-up.mp3",
   },
-  {
-    id: "rasputin",
-    name: "Rasputin",
-    artist: "Boney M",
-    album: "Nightflight to Venus",
-    year: "1978",
-    img: "/src/assets/album_covers/rasputin.jpg",
-    mp3: "/src/assets/music/rasputin.mp3",
-  },
+
   {
     id: "take-on-me",
     name: "Take On Me",

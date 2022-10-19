@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from "react";
 import './css/App.css'
 import { songData } from "./songData";
-
+import Slider from "./components/slider/Slider";
+import ControlPanel from "./components/controls/ControlPanel";
 
 
 function App() {
@@ -62,64 +63,129 @@ function App() {
 
 
 
+  const [percentage, setPercentage] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+
+  const audioRef = useRef<any>(null);
+
+  const onChange = (e: any) => {
+    const audio = audioRef.current;
+    audio.currentTime = (audio.duration / 100) * e.target.value;
+    setPercentage(e.target.value);
+  };
+
+  const play = () => {
+    const audio = audioRef.current;
+    audio.volume = 0.5;
+
+    if (!isPlaying) {
+      setIsPlaying(true);
+      audio.play();
+    }
+
+    if (isPlaying) {
+      setIsPlaying(false);
+      audio.pause();
+    }
+  };
+
+  const getCurrDuration = (e: any) => {
+    const percent = (
+      (e.currentTarget.currentTime / e.currentTarget.duration) *
+      100
+    ).toFixed(2);
+    const time = e.currentTarget.currentTime;
+
+    setPercentage(+percent);
+    setCurrentTime(time.toFixed(2));
+  };
+
+  function secondsToHms(seconds: any) {
+    if (!seconds) return "0:00";
+
+    let duration = seconds;
+    let hours: any = duration / 3600;
+    duration = duration % 3600;
+
+    let min: any = parseInt(String(duration / 60));
+    duration = duration % 60;
+
+    let sec: any = parseInt(duration);
+
+    if (sec < 10) {
+      sec = `0${sec}`;
+    }
+    // if (min < 10) {
+    //   min = `0${min}`;
+    // }
+    if (min < 10) {
+      min = `${min}`;
+    }
+
+
+    if (parseInt(hours, 10) > 0) {
+      return `${parseInt(hours, 10)}h ${min}m ${sec}s`;
+    } else if (min == 0) {
+      return `0:${sec}`;
+    } else {
+      return `${min}:${sec}`;
+    }
+  }
 
   return (
     <div className="App">
-      <div className="music-container" id="music-container">
-        <div className="music-info">
-          <h4 id="title"></h4>
+      <div className="song-img-block">
+        <img
+          className="song-img"
+          src={currentSong.img}
+          alt="music-cover"
+          id="cover"
+        />
+      </div>
 
-          <div className="">
-            <p className="song-name">
-              {songIndex + 1} / {songs.length}
-            </p>
-            <p className="song-name">{currentSong.name}</p>
-            <p className="song-name">{currentSong.artist}</p>
-            <p className="song-name">{currentSong.album}</p>
-            <p className="song-name">{currentSong.year}</p>
-          </div>
-
-          <div className="progress-container" id="progress-container">
-            <div className="progress" id="progress"></div>
-            <p className="progress-text" id="progressText">
-              Time
-            </p>
-          </div>
+      <div className="song-info">
+        <div className="song-main">
+          <p className="song-name">{currentSong.name}</p>
+          <p className="song-artist">{currentSong.artist}</p>
         </div>
+        <button className="heart-btn">
+          <i className="fa-regular fa-heart"></i>
+          {/* <i className="fa-solid fa-heart"></i> */}
+        </button>
+      </div>
 
-        <audio src={currentSong.mp3}></audio>
-
-        <div className="img-container">
-          <img src={currentSong.img} alt="music-cover" id="cover" />
+      <div className="song-time">
+        <Slider percentage={percentage} onChange={onChange} />
+        <div className="times">
+          <div className="timer">{secondsToHms(currentTime)}</div>
+          <div className="timer">{secondsToHms(duration)}</div>
         </div>
+        <audio
+          ref={audioRef}
+          onTimeUpdate={getCurrDuration}
+          onLoadedData={(e: any) => {
+            setDuration(e.currentTarget.duration.toFixed(2));
+          }}
+          src={currentSong.mp3}
+        ></audio>
+      </div>
 
-        <div className="navigation">
-          <button
-            id="shuffle"
-            className="action-btn"
-            onClick={toggleShuffle}
-            style={shuffle ? { color: "cyan" } : { color: "#dfdbdf" }}
-          >
-            <i className="fas fa-shuffle"></i>
-          </button>
-          <button id="prev" className="action-btn" onClick={prevSong}>
-            <i className="fas fa-backward"></i>
-          </button>
-          <button id="play" className="action-btn action-btn-big">
-            <i className="fas fa-play"></i>
-          </button>
-          <button id="next" className="action-btn" onClick={nextSong}>
-            <i className="fas fa-forward"></i>
-          </button>
-          <button
-            id="repeat"
-            className="action-btn"
-            onClick={toggleRepeat}
-            style={repeat ? { color: "cyan" } : { color: "#dfdbdf" }}
-          >
-            <i className="fas fa-repeat"></i>
-          </button>
-        </div>
+      <div className="song-controls">
+        <ControlPanel
+          play={play}
+          isPlaying={isPlaying}
+          duration={duration}
+          currentTime={currentTime}
+          nextSong={nextSong}
+          prevSong={prevSong}
+          randomSong={randomSong}
+          toggleShuffle={toggleShuffle}
+          toggleRepeat={toggleRepeat}
+          shuffle={shuffle}
+          repeat={repeat}
+        />
       </div>
     </div>
   );
