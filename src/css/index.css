@@ -65,7 +65,7 @@ body {
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.479);
   user-select: none;
   width: 350px;
-  height: 600px;
+  /* height: 620px; */
  }
 
 
@@ -169,6 +169,7 @@ body {
 
 .media-btn-big {
   font-size: 3.8rem;
+  color: var(--clr-font);
 }
 
 .media-btn:focus {
@@ -199,6 +200,36 @@ body {
     color: var(--clr-accent);
 }
 
+.mute-btn {
+  background-color: inherit;
+  border: none;
+  color: inherit;
+  font-size: 1.4rem;
+  text-align: left;
+  width: 40px;
+  transform: translateY();
+}
+.mute-btn:focus {
+  outline: none;
+}
+
+.song-footer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 1em;
+}
+
+.volume-control {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  gap: .1em;
+}
+
+
+
 @media(min-width:700px) {
 
   body {
@@ -207,8 +238,10 @@ body {
   }
   .App {
     width: 550px;
-    height: 800px;
+    height: 825px;
     overflow-y: hidden;
   }
 }
+
+
 

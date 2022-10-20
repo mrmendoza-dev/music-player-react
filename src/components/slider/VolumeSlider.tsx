@@ -1,19 +1,17 @@
 import { useState, useRef, useEffect, useLayoutEffect } from "react";
 import "./slider.css";
 
-export default function Slider(props: any) {
+export default function VolumeSlider(props: any) {
   const [position, setPosition] = useState(0);
   const [marginLeft, setMarginLeft] = useState(0);
   const [progressBarWidth, setProgressBarWidth] = useState(0);
 
-  const rangeRef: any = useRef();
-  const thumbRef: any = useRef();
-
-
+  const volumeRangeRef: any = useRef();
+  const volumeThumbRef: any = useRef();
 
   useEffect(() => {
-    const rangeWidth = rangeRef.current.getBoundingClientRect().width;
-    const thumbWidth = thumbRef.current.getBoundingClientRect().width;
+    const rangeWidth = volumeRangeRef.current.getBoundingClientRect().width;
+    const thumbWidth = volumeThumbRef.current.getBoundingClientRect().width;
     const centerThumb = (thumbWidth / 100) * props.percentage * -1;
     const centerProgressBar =
       thumbWidth +
@@ -25,7 +23,7 @@ export default function Slider(props: any) {
   }, [props.percentage]);
 
   return (
-    <div className="slider-container">
+    <div className="volume-container">
       <div
         className="progress-bar-cover"
         style={{
@@ -34,7 +32,7 @@ export default function Slider(props: any) {
       ></div>
       <div
         className="thumb"
-        ref={thumbRef}
+        ref={volumeThumbRef}
         style={{
           left: `${position}%`,
           marginLeft: `${marginLeft}px`,
@@ -43,8 +41,8 @@ export default function Slider(props: any) {
       <input
         type="range"
         value={position}
-        ref={rangeRef}
-        step="0.01"
+        ref={volumeRangeRef}
+        // step="0.01"
         className="range"
         onChange={props.onChange}
       />

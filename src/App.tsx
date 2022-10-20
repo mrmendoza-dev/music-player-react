@@ -2,10 +2,12 @@ import { useState, useEffect, useRef } from "react";
 import './css/App.css'
 import { songData } from "./songData";
 import Slider from "./components/slider/Slider";
+import VolumeSlider from "./components/slider/VolumeSlider";
+
 import ControlPanel from "./components/controls/ControlPanel";
 
 
-function App() {
+export default function App() {
   const [songs, setSongs] = useState(songData);
   const [songIndex, setSongIndex] = useState(0);
   const [currentSong, setCurrentSong] = useState(songs[songIndex]);
@@ -13,6 +15,9 @@ function App() {
   const [repeat, setRepeat] = useState(false);
   const [favorites, setFavorites] = useState<any>([]);
   
+  const [volume, setVolume] = useState(50);
+  const [lastVolume, setLastVolume] = useState(50);
+
   const [percentage, setPercentage] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
@@ -25,6 +30,11 @@ function App() {
     setSongs(songData);
     resetTime();
   }, []);
+
+    useEffect(() => {
+      const audio = audioRef.current;
+      audio.volume = volume / 100;
+        }, [volume]);
 
   useEffect(() => {
     setCurrentSong(songs[songIndex]);
@@ -86,15 +96,34 @@ function App() {
 
 
 
+  const changeVolume = (e: any) => {
+    if (e.target.value < 3) {
+      setVolume(0);
+    } else {
+      setVolume(e.target.value);
+    }
+  };
+
+  function muteVolume() {
+    if (volume === 0) {
+      setVolume(lastVolume);
+    } else {
+      setVolume(0);
+      setLastVolume(volume)
+    }
+  }
+  
+
   const onChange = (e: any) => {
     const audio = audioRef.current;
     audio.currentTime = (audio.duration / 100) * e.target.value;
     setPercentage(e.target.value);
   };
 
+
   function playSong() {
     const audio = audioRef.current;
-    audio.volume = 0.5;
+    audio.volume = volume / 100;
 
     if (!isPlaying) {
       setIsPlaying(true);
@@ -185,6 +214,7 @@ function App() {
 
       <div className="song-time">
         <Slider percentage={percentage} onChange={onChange} />
+
         <div className="times">
           <div className="timer">{secondsToHms(currentTime)}</div>
           <div className="timer">{secondsToHms(duration)}</div>
@@ -215,8 +245,22 @@ function App() {
           repeat={repeat}
         />
       </div>
+      <div className="song-footer">
+        <div className="volume-control">
+          <button className="mute-btn" onClick={muteVolume}>
+            {volume >= 50 ? (
+              <i className="fa-solid fa-volume-high"></i>
+            ) : volume > 0 ? (
+              <i className="fa-solid fa-volume-low"></i>
+            ) : 
+            <i className="fa-solid fa-volume-xmark"></i>
+            }
+          </button>
+          <VolumeSlider percentage={volume} onChange={changeVolume} />
+        </div>
+      </div>
     </div>
   );
 }
 
-export default App
+

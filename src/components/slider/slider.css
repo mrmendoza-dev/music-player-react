@@ -1,11 +1,12 @@
-.slider-container {
-  --progress-bar-height: 4px;
-}
 
 .slider-container {
   position: relative;
   width: 100%;
+  --progress-bar-height: 4px;
+  --thumb-width: 15px;
+  --thumb-height: 15px;
 }
+
 
 /* Background */
 .slider-container::before {
@@ -25,7 +26,6 @@
 /* Custom Progress Bar */
 .progress-bar-cover {
   background-color: #fff;
-  box-shadow: 0 0 5px var(--clr-accent);
   width: 0%;
   height: var(--progress-bar-height);
   display: block;
@@ -49,10 +49,6 @@
   margin: 0 auto;
 }
 
-.slider-container {
-  --thumb-width: 15px;
-  --thumb-height: 15px;
-}
 
 .range::-webkit-slider-thumb {
   width: var(--thumb-width);
@@ -77,4 +73,33 @@
   transform: translate(0%, -50%);
   pointer-events: none; /* Remove pointer events on thumb so user can click on the actual thumb beaneath it!  */
   user-select: none; /*  Prevent Accidentally highlighting the number while sliding the cursor  */
+}
+
+
+
+
+
+
+.volume-container {
+  position: relative;
+  width: 25%;
+  --progress-bar-height: 4px;
+  --thumb-width: 15px;
+  --thumb-height: 15px;
+}
+
+
+/* Background */
+.volume-container::before {
+  content: '';
+  background-color: rgba(255, 255, 255, 0.25);
+  width: 99%;
+  height: calc(var(--progress-bar-height) - 1px);
+  display: block;
+  position: absolute;
+  border-radius: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
 }
