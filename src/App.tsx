@@ -23,10 +23,13 @@ function App() {
 
   useEffect(() => {
     setSongs(songData);
+    resetTime();
   }, []);
 
   useEffect(() => {
     setCurrentSong(songs[songIndex]);
+    // setIsPlaying(false);
+    setIsPlaying(false);
   }, [songIndex]);
 
 
@@ -59,6 +62,9 @@ function App() {
     }
   }
 
+  function resetTime() {
+    setCurrentTime(0);
+  }
   function toggleShuffle() {
     setShuffle((prevFlag) => !prevFlag);
   }
@@ -86,7 +92,7 @@ function App() {
     setPercentage(e.target.value);
   };
 
-  const play = () => {
+  function playSong() {
     const audio = audioRef.current;
     audio.volume = 0.5;
 
@@ -99,7 +105,10 @@ function App() {
       setIsPlaying(false);
       audio.pause();
     }
-  };
+  }
+
+
+
 
   const getCurrDuration = (e: any) => {
     const percent = (
@@ -168,7 +177,7 @@ function App() {
         >
           {favorites.includes(currentSong.id) ? (
             <i className="fa-solid fa-heart highlighted"></i>
-            ) : (
+          ) : (
             <i className="fa-regular fa-heart"></i>
           )}
         </button>
@@ -186,13 +195,14 @@ function App() {
           onLoadedData={(e: any) => {
             setDuration(e.currentTarget.duration.toFixed(2));
           }}
+          onEnded={nextSong}
           src={currentSong.mp3}
         ></audio>
       </div>
 
       <div className="song-controls">
         <ControlPanel
-          play={play}
+          playSong={playSong}
           isPlaying={isPlaying}
           duration={duration}
           currentTime={currentTime}

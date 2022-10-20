@@ -26,7 +26,7 @@ function ControlPanel(props: any) {
       <button
         id="play"
         className="media-btn media-btn-big"
-        onClick={props.play}
+        onClick={props.playSong}
       >
         {props.isPlaying ? (
           <i className="fa-solid fa-circle-pause"></i>
