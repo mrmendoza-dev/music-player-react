@@ -2,10 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import './css/App.css'
 import { songData } from "./songData";
 import Slider from "./components/slider/Slider";
-import VolumeSlider from "./components/slider/VolumeSlider";
-
+import Volume from "./components/Volume/Volume";
 import ControlPanel from "./components/controls/ControlPanel";
-
 
 export default function App() {
   const [songs, setSongs] = useState(songData);
@@ -28,6 +26,7 @@ export default function App() {
 
   useEffect(() => {
     setSongs(songData);
+    setSongIndex(Math.floor(Math.random() * songs.length));
     resetTime();
   }, []);
 
@@ -40,41 +39,45 @@ export default function App() {
     setCurrentSong(songs[songIndex]);
     // setIsPlaying(false);
     setIsPlaying(false);
+    resetTime();
   }, [songIndex]);
 
 
-  function randomSong() {
-    let randomIndex = Math.floor(Math.random() * songs.length);
-    setSongIndex(randomIndex);
+
+  function checkFlags() {
+    if (repeat) {
+      setSongIndex((prevIndex) => prevIndex);
+    } else if (shuffle) {
+      let randomIndex = Math.floor(Math.random() * songs.length);
+      setSongIndex(randomIndex);
+    }
   }
 
   function nextSong() {
-    if (shuffle) {
-      randomSong();
-      return;
-    }
-    if (songIndex === songs.length - 1) {
-      setSongIndex(0);
+    if (shuffle || repeat) {
+      checkFlags();
     } else {
-      setSongIndex((prevIndex) => prevIndex + 1);
+      if (songIndex === songs.length - 1) {
+        setSongIndex(0);
+      } else {
+        setSongIndex((prevIndex) => prevIndex + 1);
+      }
     }
   }
 
   function prevSong() {
-    if (shuffle) {
-      randomSong();
-      return;
-    }
-    if (songIndex === 0) {
-      setSongIndex(songs.length - 1);
+    if (shuffle || repeat) {
+      checkFlags();
     } else {
-      setSongIndex((prevIndex) => prevIndex - 1);
+      if (songIndex === 0) {
+        setSongIndex(songs.length - 1);
+      } else {
+        setSongIndex((prevIndex) => prevIndex - 1);
+      }
     }
   }
 
-  function resetTime() {
-    setCurrentTime(0);
-  }
+
   function toggleShuffle() {
     setShuffle((prevFlag) => !prevFlag);
   }
@@ -93,7 +96,9 @@ export default function App() {
     setFavorites(favoritesList);
   }
 
-
+  function resetTime() {
+    setCurrentTime(0);
+  }
 
 
   const changeVolume = (e: any) => {
@@ -230,15 +235,17 @@ export default function App() {
         ></audio>
       </div>
 
+
+
       <div className="song-controls">
         <ControlPanel
+          songList = {songs}
           playSong={playSong}
           isPlaying={isPlaying}
           duration={duration}
           currentTime={currentTime}
           nextSong={nextSong}
           prevSong={prevSong}
-          randomSong={randomSong}
           toggleShuffle={toggleShuffle}
           toggleRepeat={toggleRepeat}
           shuffle={shuffle}
@@ -252,11 +259,15 @@ export default function App() {
               <i className="fa-solid fa-volume-high"></i>
             ) : volume > 0 ? (
               <i className="fa-solid fa-volume-low"></i>
-            ) : 
-            <i className="fa-solid fa-volume-xmark"></i>
-            }
+            ) : (
+              <i className="fa-solid fa-volume-xmark"></i>
+            )}
           </button>
-          <VolumeSlider percentage={volume} onChange={changeVolume} />
+          <Volume
+            percentage={volume}
+            onChange={changeVolume}
+            audio={audioRef.current}
+          />
         </div>
       </div>
     </div>

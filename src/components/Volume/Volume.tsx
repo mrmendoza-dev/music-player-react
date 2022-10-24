@@ -1,7 +1,7 @@
-import { useState, useRef, useEffect, useLayoutEffect } from "react";
-import "./slider.css";
+import { useState, useRef, useEffect } from "react";
+import "./volume.css";
 
-export default function VolumeSlider(props: any) {
+export default function Volume(props: any) {
   const [position, setPosition] = useState(0);
   const [marginLeft, setMarginLeft] = useState(0);
   const [progressBarWidth, setProgressBarWidth] = useState(0);

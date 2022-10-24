@@ -1,5 +1,5 @@
 import React from "react";
-import "./control-panel.css";
+import "./index.css";
 
 function ControlPanel(props: any) {
 
@@ -14,7 +14,7 @@ function ControlPanel(props: any) {
         style={
           props.shuffle
             ? { color: "var(--clr-accent)" }
-            : { color: "var(--clr-btn)" }
+            : {}
         }
       >
         <i className="fas fa-shuffle"></i>
@@ -45,7 +45,7 @@ function ControlPanel(props: any) {
         style={
           props.repeat
             ? { color: "var(--clr-accent)" }
-            : { color: "var(--clr-btn)" }
+            : {}
         }
       >
         <i className="fas fa-repeat"></i>

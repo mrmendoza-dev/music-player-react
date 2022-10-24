@@ -151,7 +151,8 @@ body {
 .control-panel {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: .6em;
   z-index: 1;
 }
 
@@ -171,26 +172,28 @@ body {
   font-size: 3.8rem;
   color: var(--clr-font);
 }
-
+.media-btn-big:hover {
+  transform: scale(1.1);
+}
 .media-btn:focus {
   outline: 0;
 }
 .media-btn:hover {
-  color: var(--clr-accent);
+  color: var(--clr-font);
 }
 
 
 .heart-btn {
   background-color: inherit;
   border: none;
-  color: inherit;
+  color: var(--clr-btn);
   font-size: 1.8rem;
   transition: all 100ms;
 
 }
 
 .heart-btn:hover {
-  color: var(--clr-accent);
+  color: var(--clr-font);
 }
 .heart:focus {
   outline: none;
@@ -200,32 +203,13 @@ body {
     color: var(--clr-accent);
 }
 
-.mute-btn {
-  background-color: inherit;
-  border: none;
-  color: inherit;
-  font-size: 1.4rem;
-  text-align: left;
-  width: 40px;
-  transform: translateY();
-}
-.mute-btn:focus {
-  outline: none;
-}
+
 
 .song-footer {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin-top: 1em;
-}
-
-.volume-control {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  width: 100%;
-  gap: .1em;
 }
 
 
@@ -240,6 +224,10 @@ body {
     width: 550px;
     height: 825px;
     overflow-y: hidden;
+  }
+  .control-panel {
+      justify-content: center;
+  gap: 1.5em;
   }
 }
 
