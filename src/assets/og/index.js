@@ -104,7 +104,6 @@ function nextSong() {
     songIndex = 0;
   }
 
-  console.log(songIndex);
   loadSong(songs[songIndex]);
   playSong();
 }
@@ -200,7 +199,6 @@ function shuffleSongs() {
 // ) is off, 1 is repeat, and 2 is repeat-1
 function repeatSongs() {
   repeat++;
-  console.log(repeat);
   if (repeat > 2) {
     repeat = 0;
   }

@@ -5,6 +5,29 @@ import Slider from "./components/slider/Slider";
 import Volume from "./components/Volume/Volume";
 import ControlPanel from "./components/controls/ControlPanel";
 
+
+
+function HeartSong(props: any) {
+  return (
+    <button
+      className="heart-btn"
+      onClick={() => {
+        props.addToFavorites(props.currentSong.id);
+      }}
+    >
+      {props.favorites.includes(props.currentSong.id) ? (
+        <i className="fa-solid fa-heart highlighted"></i>
+      ) : (
+        <i className="fa-regular fa-heart"></i>
+      )}
+    </button>
+  );
+}
+
+
+
+
+
 export default function App() {
   const [songs, setSongs] = useState(songData);
   const [songIndex, setSongIndex] = useState(0);
@@ -188,86 +211,160 @@ export default function App() {
   }
 
   return (
-    <div className="App">
-      <div className="song-img-block">
-        <img
-          className="song-img"
-          src={currentSong.img}
-          alt="music-cover"
-          id="cover"
-        />
-      </div>
+    <div className="WebPlayer">
+      <div className="WebPlayer">
+        <div className="wp-main">
+          <div className="wp-main-sidebar">
+            <div className="">
+              <div className="wp-sidebar-tab">
+                <i className="fa-solid fa-ellipsis"></i>
+              </div>
+              <div className="wp-sidebar-tab">
+                <i className="fa-solid fa-house"></i> <p>Home</p>
+              </div>
+              <div className="wp-sidebar-tab">
+                <i className="fa-solid fa-magnifying-glass"></i> <p>Search</p>
+              </div>
+              <div className="wp-sidebar-tab">
+                <i className="fa-solid fa-book-open"></i> <p>Your Library</p>
+              </div>
+            </div>
 
-      <div className="song-info">
-        <div className="song-main">
-          <p className="song-name">{currentSong.name}</p>
-          <p className="song-artist">{currentSong.artist}</p>
+            <div className="song-img-block">
+              <img
+                className="song-img"
+                src={currentSong.img}
+                alt="music-cover"
+                id="cover"
+              />
+            </div>
+          </div>
+          <div className="wp-main-content">
+            <div className="wp-list-header">
+              <div className="">
+                <button className="">
+                  <i className="fa-solid fa-play"></i>
+                </button>
+              </div>
+              <div className="">
+                <button className="">
+                  <i className="fa-solid fa-magnifying-glass"></i>
+                </button>
+              </div>
+            </div>
+            <div className="wp-list-content">
+              <table className="wp-song-table">
+                <thead>
+                  <tr>
+                    <td>#</td>
+                    <td>Title</td>
+                    <td>Album</td>
+                    <td>
+                      <i className="fa-regular fa-clock"></i>
+                    </td>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {songs.map((song, index) => {
+                    return (
+                      <tr className="wp-table-row">
+                        <td>{index + 1}</td>
+
+                        <td className="wp-table-song">
+                          <img src={song.img} className="wp-table-img" />
+                          <div className="wp-table-song-info">
+                            <p>{song.name}</p>
+                            <p>{song.artist}</p>
+                          </div>
+                        </td>
+
+                        <td>{song.album}</td>
+                        <td className="wp-table-dur">
+                          <HeartSong
+                            addToFavorites={addToFavorites}
+                            currentSong={song}
+                            favorites={favorites}
+                          />
+                          <p>1:26</p>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
-        <button
-          className="heart-btn"
-          onClick={() => {
-            addToFavorites(currentSong.id);
-          }}
-        >
-          {favorites.includes(currentSong.id) ? (
-            <i className="fa-solid fa-heart highlighted"></i>
-          ) : (
-            <i className="fa-regular fa-heart"></i>
-          )}
-        </button>
-      </div>
 
-      <div className="song-time">
-        <Slider percentage={percentage} onChange={onChange} />
+        <div className="wp-controls">
+          <div className="wp-controls-song">
+            <div className="">
+              <p className="song-name">{currentSong.name}</p>
+              <p className="song-artist">{currentSong.artist}</p>
+            </div>
+            <HeartSong
+              addToFavorites={addToFavorites}
+              currentSong={currentSong}
+              favorites={favorites}
+            />
+          </div>
+          <div className="wp-controls-main">
+            <div className="">
+              <div className="song-controls">
+                <ControlPanel
+                  songList={songs}
+                  playSong={playSong}
+                  isPlaying={isPlaying}
+                  duration={duration}
+                  currentTime={currentTime}
+                  nextSong={nextSong}
+                  prevSong={prevSong}
+                  toggleShuffle={toggleShuffle}
+                  toggleRepeat={toggleRepeat}
+                  shuffle={shuffle}
+                  repeat={repeat}
+                />
+              </div>
+            </div>
+            <div className="">
+              <div className="song-time">
+                <Slider percentage={percentage} onChange={onChange} />
 
-        <div className="times">
-          <div className="timer">{secondsToHms(currentTime)}</div>
-          <div className="timer">{secondsToHms(duration)}</div>
-        </div>
-        <audio
-          ref={audioRef}
-          onTimeUpdate={getCurrDuration}
-          onLoadedData={(e: any) => {
-            setDuration(e.currentTarget.duration.toFixed(2));
-          }}
-          onEnded={nextSong}
-          src={currentSong.mp3}
-        ></audio>
-      </div>
-
-
-
-      <div className="song-controls">
-        <ControlPanel
-          songList = {songs}
-          playSong={playSong}
-          isPlaying={isPlaying}
-          duration={duration}
-          currentTime={currentTime}
-          nextSong={nextSong}
-          prevSong={prevSong}
-          toggleShuffle={toggleShuffle}
-          toggleRepeat={toggleRepeat}
-          shuffle={shuffle}
-          repeat={repeat}
-        />
-      </div>
-      <div className="song-footer">
-        <div className="volume-control">
-          <button className="mute-btn" onClick={muteVolume}>
-            {volume >= 50 ? (
-              <i className="fa-solid fa-volume-high"></i>
-            ) : volume > 0 ? (
-              <i className="fa-solid fa-volume-low"></i>
-            ) : (
-              <i className="fa-solid fa-volume-xmark"></i>
-            )}
-          </button>
-          <Volume
-            percentage={volume}
-            onChange={changeVolume}
-            audio={audioRef.current}
-          />
+                <div className="times">
+                  <div className="timer">{secondsToHms(currentTime)}</div>
+                  <div className="timer">{secondsToHms(duration)}</div>
+                </div>
+                <audio
+                  ref={audioRef}
+                  onTimeUpdate={getCurrDuration}
+                  onLoadedData={(e: any) => {
+                    setDuration(e.currentTarget.duration.toFixed(2));
+                  }}
+                  onEnded={nextSong}
+                  src={currentSong.mp3}
+                ></audio>
+              </div>
+            </div>
+          </div>
+          <div className="wp-controls-sub">
+            <div className="volume-control">
+              <button className="mute-btn" onClick={muteVolume}>
+                {volume >= 50 ? (
+                  <i className="fa-solid fa-volume-high"></i>
+                ) : volume > 0 ? (
+                  <i className="fa-solid fa-volume-low"></i>
+                ) : (
+                  <i className="fa-solid fa-volume-xmark"></i>
+                )}
+              </button>
+              <Volume
+                percentage={volume}
+                onChange={changeVolume}
+                audio={audioRef.current}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

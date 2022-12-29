@@ -56,6 +56,18 @@ body {
   font-size: 16px;
 }
 
+.App {
+  /* width: 600px; */
+  padding: 0 10px;
+  background-color: var(--clr-bg);
+  padding: 2em 1.5em;
+  border-radius: 10px;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.479);
+  user-select: none;
+  width: 350px;
+  /* height: 620px; */
+ }
+
 
 
 
@@ -86,7 +98,6 @@ body {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  max-width: 200px;
   aspect-ratio: 1;
 }
 
@@ -176,7 +187,7 @@ body {
   background-color: inherit;
   border: none;
   color: var(--clr-btn);
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   transition: all 100ms;
 
 }
@@ -203,6 +214,34 @@ body {
 
 
 
+@media(min-width:700px) {
+
+  body {
+        overflow-y: hidden;
+
+  }
+  .App {
+    width: 550px;
+    height: 825px;
+    overflow-y: hidden;
+  }
+  .control-panel {
+      justify-content: center;
+  gap: 1.5em;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -210,95 +249,8 @@ body {
 /* WEB PLAYER */
 
 
-.WebPlayer {
-    width: 100vw;
-    height: 100vh;
-    overflow-y: hidden;
-
-      /* width: 600px; */
-  background-color: var(--clr-bg);
-  border-radius: 10px;
-  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.479);
-  user-select: none;
-  /* height: 620px; */
-}
-
-
-
-.wp-main {
-  display: flex;
-  justify-content: flex-start;
-}
-.wp-main-content {
-  width: 100%;
-    background-color: #121212;
-
-}
-.wp-list-header {
-  display: flex;
-  justify-content: space-between;
-}
-.wp-main-sidebar {
-  background-color: #000000;
-}
-
-.wp-controls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #181818;
-  border-top: 1px solid #282828;
-  bottom: 0;
-    padding: .8em 1em;
-
-}
-.wp-controls-song {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1.4em;
-}
-
-
-
-.wp-sidebar-tab {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 1em;
-}
-
-
-
-
-.wp-song-table {
-  width: 100%;
-  padding: 1em 2.4em;
-}
-
-.wp-table-dur {
-  display: flex;
-  gap: 2em;
-}
-
-
-.wp-table-row {
-  padding: 1em;
-  line-height: 2.6em;
-
-}
-.wp-table-row:hover {
-  background-color: #292929;
-}
-.wp-table-img {
-  width: 40px;
-}
-.wp-table-song {
-  display: flex;
-  gap: 1em;
-  justify-content: flex-start;
-  align-items: center;
-  line-height: 1.4;
-
-}
-
+/* .WebPlayer {
+  background-color: #8de0fe;
+  height: 500px;
+  width: 500px;
+} */
