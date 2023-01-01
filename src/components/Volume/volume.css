@@ -104,28 +104,3 @@
 }
 
 
-.mute-btn {
-  background-color: inherit;
-  border: none;
-  color: var(--clr-font-accent);
-  font-size: 1.4rem;
-  text-align: left;
-  width: 40px;
-  transform: translateY();
-}
-.mute-btn:hover {
-  color: var(--clr-font);
-}
-
-.mute-btn:focus {
-  outline: none;
-}
-
-.volume-control {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  width: 100%;
-  gap: .1em;
-}
-

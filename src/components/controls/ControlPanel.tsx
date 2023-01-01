@@ -11,16 +11,15 @@ function ControlPanel(props: any) {
         id="shuffle"
         className="media-btn"
         onClick={props.toggleShuffle}
-        style={
-          props.shuffle
-            ? { color: "var(--clr-accent)" }
-            : {}
-        }
+        style={props.shuffle ? { color: "var(--clr-accent)" } : {}}
       >
-        <i className="fas fa-shuffle"></i>
+        <i
+          className="fas fa-shuffle"
+          title={props.shuffle ? "Disable shuffle" : "Enable shuffle"}
+        ></i>
       </button>
       <button id="prev" className="media-btn" onClick={props.prevSong}>
-        <i className="fas fa-backward"></i>
+        <i className="fas fa-backward" title="Previous"></i>
       </button>
 
       <button
@@ -29,26 +28,25 @@ function ControlPanel(props: any) {
         onClick={props.playSong}
       >
         {props.isPlaying ? (
-          <i className="fa-solid fa-circle-pause"></i>
+          <i className="fa-solid fa-circle-pause" title="Pause"></i>
         ) : (
-          <i className="fa-solid fa-circle-play"></i>
+          <i className="fa-solid fa-circle-play" title="Play"></i>
         )}
       </button>
 
       <button id="next" className="media-btn" onClick={props.nextSong}>
-        <i className="fas fa-forward"></i>
+        <i className="fas fa-forward" title="Next"></i>
       </button>
       <button
         id="repeat"
         className="media-btn"
         onClick={props.toggleRepeat}
-        style={
-          props.repeat
-            ? { color: "var(--clr-accent)" }
-            : {}
-        }
+        style={props.repeat ? { color: "var(--clr-accent)" } : {}}
       >
-        <i className="fas fa-repeat"></i>
+        <i
+          className="fas fa-repeat"
+          title={props.repeat ? "Disable repeat" : "Enable repeat"}
+        ></i>
       </button>
     </div>
   );

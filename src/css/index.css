@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
 :root {
-  --clr-font: #ffffff;
-  --clr-font-accent: #d7d7d7;
+  --clr-font: #fcfcfc;
+  --clr-font-accent: #aaaaaa;
   --clr-bg: #181818;
-  --clr-accent: #1ecd5b;
+  --clr-accent: #1fdf64;
   --clr-btn: #BABABA;
+  --clr-border: #282828;
 }
 
 * {
@@ -58,6 +59,17 @@ body {
 
 
 
+.left {
+  text-align: left;
+}
+.center {
+  text-align: center;
+}
+.right {
+  text-align: right;
+}
+
+
 
 
 
@@ -77,88 +89,22 @@ body {
 
 
 
-.song-img-block {
-  display: flex;
-  background-color: black;
-}
-
-.song-img {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 200px;
-  aspect-ratio: 1;
-}
-
-
-.song-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 2em;
-}
-
-.song-main {
-
-}
-.song-name {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: .1em;
-  cursor: pointer;
-}
-.song-artist {
-  font-size: .9rem;
-  font-weight: 400;
-  color: var(--clr-font-accent);
-  cursor: pointer;
-}
-
-.song-time {
-  margin-top: 1.6em;
-
-}
-
-.times {
-  display: flex;
-  justify-content: space-between;
-}
-
-.timer {
-  font-size: 10px;
-  font-weight: 200;
-  color: var(--clr-font-accent);
-}
-
-
-
-
-.song-controls {
-
-}
-
-.control-panel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: .6em;
-  z-index: 1;
-}
-
-
 .media-btn {
   background-color: inherit;
   border: 0;
   color: var(--clr-btn);
-  font-size: 1.6rem;
+  /* font-size: 1.6rem; */
   cursor: pointer;
-  padding: 10px;
+  /* padding: 10px; */
   text-align: center;
   transition: all 100ms;
+    font-size: 1.2rem;
+
 }
 
 .media-btn-big {
-  font-size: 3.8rem;
+  /* font-size: 3.8rem; */
+  font-size: 2rem;
   color: var(--clr-font);
 }
 .media-btn-big:hover {
@@ -176,7 +122,7 @@ body {
   background-color: inherit;
   border: none;
   color: var(--clr-btn);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   transition: all 100ms;
 
 }
@@ -194,26 +140,18 @@ body {
 
 
 
-.song-footer {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-top: 1em;
-}
-
-
-
-
 
 
 
 /* WEB PLAYER */
 
 
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap'); */
+
 .WebPlayer {
     width: 100vw;
     height: 100vh;
-    overflow-y: hidden;
+    /* overflow-x: hidden; */
 
       /* width: 600px; */
   background-color: var(--clr-bg);
@@ -221,6 +159,10 @@ body {
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.479);
   user-select: none;
   /* height: 620px; */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 
@@ -228,67 +170,203 @@ body {
 .wp-main {
   display: flex;
   justify-content: flex-start;
-}
-.wp-main-content {
-  width: 100%;
-    background-color: #121212;
+        flex-grow: 1;
 
 }
-.wp-list-header {
-  display: flex;
-  justify-content: space-between;
-}
+
+
+
+
+
+
+
+/* SIDEBAR */
 .wp-main-sidebar {
   background-color: #000000;
-}
-
-.wp-controls {
+  min-width: 130px;
+  width: 300px;
+  max-width: 400px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  background-color: #181818;
-  border-top: 1px solid #282828;
-  bottom: 0;
-    padding: .8em 1em;
+
+    position: relative;
 
 }
-.wp-controls-song {
+
+
+.wp-sidebar-dir {
+  padding: 1em 2em;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   gap: 1.4em;
+  color: var(--clr-font-accent);
+  font-size: .85rem;
+  font-weight: 600;
 }
-
 
 
 .wp-sidebar-tab {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 1em;
+  gap: 1.2em;
+  cursor: pointer;
+    /* padding: 1em 2em; */
+    transition: color 200ms;
+    padding: 0em .4em;
+}
+.wp-sidebar-tab:hover {
+  color: var(--clr-font);
+}
+.wp-sidebar-tab i {
+  font-size: 1.2rem;
+}
+#more-icon {
+  font-size: 1.8rem;
+}
+
+.wp-sidebar-img-block {
+  /* position: absolute; */
+  bottom: 0;
+
+}
+.wp-sidebar-img {
+  width: 100%;
+
+}
+
+
+
+/* MAIN CONTENT */
+
+.wp-main-content {
+  width: 100%;
+    background-color: #121212;
+
+
+}
+.wp-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 2em;
+    max-width: 1900px;
+
+}
+
+.highlighted + .highlight {
+  color: #1fdf64;
+}
+
+
+.wp-header-play-btn {
+  width: 56px;
+  aspect-ratio: 1;
+  font-size: 3rem;
+  text-align: center;
+  border-radius: 50%;
+  color: var(--clr-accent);
+  background-color: inherit;
+  border: 0;
+  cursor: pointer;
+  padding: 10px;
+  text-align: center;
+  transition: all 100ms;
+
+}
+.wp-header-play-btn:hover {
+  transform: scale(1.05);
+}
+
+
+
+.wp-header-search-btn {
+  color: var(--clr-font-accent);
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  width: 35px;
+  aspect-ratio: 1;
+
+
+}
+.wp-header-search-btn:hover {
+  color: var(--clr-font);
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
 }
 
 
 
 
-.wp-song-table {
+
+
+
+/* TABLE */
+.wp-table-wrapper {
+  padding: 0em 3.4em;
+}
+
+
+.wp-table {
   width: 100%;
+  min-width: 500px;
+  max-width: 1900px;
   padding: 1em 2.4em;
+    font-size: .9rem;
+    color: var(--clr-font-accent);
+      border-collapse: collapse;
+
+}
+.wp-table-head {
+  text-transform: uppercase;
+    border-bottom: 1px solid var(--clr-border);
+    font-size: .8rem;
+    letter-spacing: .05em;
+}
+.wp-table-head p {
+  width: min-content;
 }
 
 .wp-table-dur {
   display: flex;
+  justify-content: flex-end;
+  align-content: center;
   gap: 2em;
+  position: absolute;
+  right: 0;
 }
 
+.wp-table-dur p{
+  /* width: 100%; */
+}
+.wp-table-head > tr > td > p:hover {
+  color: var(--clr-font);
+}
 
 .wp-table-row {
-  padding: 1em;
-  line-height: 2.6em;
+  /* padding: 1em; */
+  line-height: 4em;
+  position: relative;
 
 }
 .wp-table-row:hover {
   background-color: #292929;
+}
+.thead-spacer {
+  margin: .8em 0;
+}
+.tbody-spacer {
+  margin: 1em 0;
+}
+
+
+.wp-table-row:hover > td .song-highlight{
+  color: var(--clr-font);
+}
+.wp-table-row:hover > td .hidden{
+  opacity: 1;
 }
 .wp-table-img {
   width: 40px;
@@ -298,7 +376,151 @@ body {
   gap: 1em;
   justify-content: flex-start;
   align-items: center;
+
   line-height: 1.4;
 
 }
 
+.wp-table-num {
+  font-size: 1rem;
+}
+
+
+.wp-table-song-name {
+    color: var(--clr-font);
+font-size: 1rem;
+
+}
+
+/* CONTROLS */
+
+.wp-song-name {
+    color: var(--clr-font);
+    font-size: 1rem;
+
+}
+.wp-song-artist {
+  color: var(--clr-font-accent);
+      font-size: .7rem;
+      margin-top: .4em;
+
+}
+
+.wp-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #181818;
+  border-top: 1px solid var(--clr-border);
+  bottom: 0;
+    padding: .6em 1.6em;
+    height: 95px;
+
+        /* height: 200px; */
+
+
+}
+.wp-footer-song {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1.4em;
+    width: 25%;
+
+}
+.wp-footer-main {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.wp-song-time {
+  width: 100%;
+}
+.wp-times {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .4em;
+
+}
+.wp-time {
+  font-size: .7rem;
+  color: var(--clr-font-accent);
+}
+
+.wp-footer-sub {
+    width: 25%;
+
+}
+
+.wp-volume-bar {
+  width: 90px;
+}
+
+
+.media-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.song-more-btn {
+  font-size: 1.2rem;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+
+
+.song-footer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 1em;
+}
+
+
+.wp-control-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.4em;
+  margin-bottom: .2em;
+}
+
+
+.mute-btn {
+  background-color: inherit;
+  border: none;
+  color: var(--clr-font-accent);
+  font-size: 1rem;
+  text-align: left;
+  width: 28px;
+  transform: translateY();
+}
+.mute-btn:hover {
+  color: var(--clr-font);
+}
+
+.mute-btn:focus {
+  outline: none;
+}
+
+.volume-control {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  gap: .1em;
+}
+
+
+.wp-time-bar {
+  min-width: 210px;
+  max-width: 620px;
+  width: 100%;
+}
