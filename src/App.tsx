@@ -54,7 +54,7 @@ export default function App() {
 
   const audioRef = useRef<any>(null);
   
-
+  const [playlists, setPlaylists] = useState(["Trending", "New Releases", "Eighties Playlist"])
   
 
   function loadStorage() {
@@ -201,6 +201,13 @@ export default function App() {
 
 
 
+    function createPlaylist() {
+    let newPlaylist = "New Playlist";
+    setPlaylists([...playlists, newPlaylist])
+  }
+
+
+
 
   const getCurrDuration = (e: any) => {
     const percent = (
@@ -259,19 +266,33 @@ export default function App() {
             <div className="wp-sidebar-tab">
               <i className="fa-solid fa-ellipsis" id="more-icon"></i>
             </div>
-            <div className="wp-sidebar-tab">
+            <button className="wp-sidebar-tab">
               <i className="fa-solid fa-house"></i> <p>Home</p>
-            </div>
-            <div className="wp-sidebar-tab">
+            </button>
+            <button className="wp-sidebar-tab">
               <i className="fa-solid fa-magnifying-glass"></i> <p>Search</p>
-            </div>
-            <div className="wp-sidebar-tab">
+            </button>
+            <button className="wp-sidebar-tab">
               <i className="fa-solid fa-book-open"></i> <p>Your Library</p>
-            </div>
-            <div className="wp-sidebar-tab">
+            </button>
+
+            <hr className="hidden" />
+
+            <button className="wp-sidebar-tab" onClick={createPlaylist}>
+              <i className="fa-solid fa-square-plus"></i>
+              <p>Create Playlist</p>
+            </button>
+
+            <button className="wp-sidebar-tab">
               <i className="fa-solid fa-heart"></i>
               <p>Liked Songs</p>
-            </div>
+            </button>
+
+            <hr className="hr-border"></hr>
+            {playlists.map((playlist) => {
+              return <p className="wp-playlist">{playlist}</p>;
+            })}
+
           </div>
 
           <div className="wp-sidebar-img-block">

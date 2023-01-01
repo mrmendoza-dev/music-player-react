@@ -27,7 +27,7 @@ body {
 
 
 button {
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 img {
@@ -68,7 +68,9 @@ body {
 .right {
   text-align: right;
 }
-
+.hidden {
+    opacity: 0;
+}
 
 
 
@@ -94,7 +96,7 @@ body {
   border: 0;
   color: var(--clr-btn);
   /* font-size: 1.6rem; */
-  cursor: pointer;
+  /* cursor: pointer; */
   /* padding: 10px; */
   text-align: center;
   transition: all 100ms;
@@ -203,6 +205,7 @@ body {
   color: var(--clr-font-accent);
   font-size: .85rem;
   font-weight: 600;
+  /* overflow-y: scroll; */
 }
 
 
@@ -215,13 +218,32 @@ body {
     /* padding: 1em 2em; */
     transition: color 200ms;
     padding: 0em .4em;
+    color: inherit;
+    background-color: inherit;
+    font-weight: inherit;
+    border: none;
+    padding: 0;
 }
 .wp-sidebar-tab:hover {
   color: var(--clr-font);
 }
 .wp-sidebar-tab i {
   font-size: 1.2rem;
+  width: 20px;
+  text-align: center;
 }
+.hr-border {
+  border: .1em solid var(--clr-border);
+}
+
+
+.wp-playlist {
+  color: var(--clr-font-accent);
+}
+.wp-playlist:hover {
+  color: var(--clr-font);
+}
+
 #more-icon {
   font-size: 1.8rem;
 }
@@ -269,7 +291,6 @@ body {
   color: var(--clr-accent);
   background-color: inherit;
   border: 0;
-  cursor: pointer;
   padding: 10px;
   text-align: center;
   transition: all 100ms;
@@ -470,9 +491,6 @@ font-size: 1rem;
   font-size: 1.2rem;
 }
 
-.hidden {
-  opacity: 0;
-}
 
 
 
