@@ -1,14 +1,8 @@
-import { useState, useEffect, useRef } from "react";
-import './css/App.css'
-import { songData } from "./songData";
+import { useEffect, useRef, useState } from "react";
 import Slider from "./components/slider/Slider";
 import Volume from "./components/Volume/Volume";
-import ControlPanel from "./components/controls/ControlPanel";
-
-
-
-
-
+import "./css/App.css";
+import { songData } from "./songData";
 
 function HeartSong(props: any) {
   return (
@@ -32,10 +26,6 @@ function HeartSong(props: any) {
   );
 }
 
-
-
-
-
 export default function App() {
   const [songs, setSongs] = useState(songData);
   const [songIndex, setSongIndex] = useState(0);
@@ -43,7 +33,7 @@ export default function App() {
   const [shuffle, setShuffle] = useState(false);
   const [repeat, setRepeat] = useState(false);
   const [favorites, setFavorites] = useState<any>(loadStorage);
-  
+
   const [volume, setVolume] = useState(50);
   const [lastVolume, setLastVolume] = useState(50);
 
@@ -53,14 +43,15 @@ export default function App() {
   const [currentTime, setCurrentTime] = useState(0);
 
   const audioRef = useRef<any>(null);
-  
-  const [playlists, setPlaylists] = useState(["Trending", "New Releases", "Eighties Playlist"])
-  
+
+  const [playlists, setPlaylists] = useState([
+    "Trending",
+    "New Releases",
+    "Eighties Playlist",
+  ]);
 
   function loadStorage() {
-    let favorites: any = JSON.parse(
-      localStorage.getItem("favorites") || "[]"
-    );
+    let favorites: any = JSON.parse(localStorage.getItem("favorites") || "[]");
     if (favorites != undefined) {
       return favorites;
     } else {
@@ -71,10 +62,8 @@ export default function App() {
 
   function setStorage() {
     localStorage.setItem("favorites", JSON.stringify(favorites));
-    console.log(favorites)
+    console.log(favorites);
   }
-
-
 
   useEffect(() => {
     setSongs(songData);
@@ -83,15 +72,14 @@ export default function App() {
     loadStorage();
   }, []);
 
-
-  useEffect(()=> {
+  useEffect(() => {
     setStorage();
-  }, [favorites])
+  }, [favorites]);
 
-    useEffect(() => {
-      const audio = audioRef.current;
-      audio.volume = volume / 100;
-        }, [volume]);
+  useEffect(() => {
+    const audio = audioRef.current;
+    audio.volume = volume / 100;
+  }, [volume]);
 
   useEffect(() => {
     setCurrentSong(songs[songIndex]);
@@ -99,8 +87,6 @@ export default function App() {
     setIsPlaying(false);
     resetTime();
   }, [songIndex]);
-
-
 
   function checkFlags() {
     if (repeat) {
@@ -135,7 +121,6 @@ export default function App() {
     }
   }
 
-
   function toggleShuffle() {
     setShuffle((prevFlag) => !prevFlag);
   }
@@ -145,11 +130,11 @@ export default function App() {
   }
 
   function addToFavorites(id: any) {
-    let favoritesList = favorites.splice(0)
+    let favoritesList = favorites.splice(0);
     if (favoritesList.includes(id)) {
       favoritesList = favoritesList.filter((e: any) => e !== id);
     } else {
-    favoritesList.push(id);
+      favoritesList.push(id);
     }
     setFavorites(favoritesList);
   }
@@ -157,7 +142,6 @@ export default function App() {
   function resetTime() {
     setCurrentTime(0);
   }
-
 
   const changeVolume = (e: any) => {
     if (e.target.value < 3) {
@@ -172,17 +156,15 @@ export default function App() {
       setVolume(lastVolume);
     } else {
       setVolume(0);
-      setLastVolume(volume)
+      setLastVolume(volume);
     }
   }
-  
 
   const onChange = (e: any) => {
     const audio = audioRef.current;
     audio.currentTime = (audio.duration / 100) * e.target.value;
     setPercentage(e.target.value);
   };
-
 
   function playSong() {
     const audio = audioRef.current;
@@ -199,15 +181,10 @@ export default function App() {
     }
   }
 
-
-
-    function createPlaylist() {
+  function createPlaylist() {
     let newPlaylist = "New Playlist";
-    setPlaylists([...playlists, newPlaylist])
+    setPlaylists([...playlists, newPlaylist]);
   }
-
-
-
 
   const getCurrDuration = (e: any) => {
     const percent = (
@@ -242,7 +219,6 @@ export default function App() {
       min = `${min}`;
     }
 
-
     if (parseInt(hours, 10) > 0) {
       return `${parseInt(hours, 10)}h ${min}m ${sec}s`;
     } else if (min == 0) {
@@ -252,11 +228,9 @@ export default function App() {
     }
   }
 
-
-    function selectSong(index: number) {
-      setSongIndex(index);
-    }
-
+  function selectSong(index: number) {
+    setSongIndex(index);
+  }
 
   return (
     <div className="WebPlayer">
@@ -289,10 +263,11 @@ export default function App() {
             </button>
 
             <hr className="hr-border"></hr>
-            {playlists.map((playlist) => {
-              return <p className="wp-playlist">{playlist}</p>;
-            })}
-
+            <div className="wp-sidebar-playlists">
+              {playlists.map((playlist) => {
+                return <p className="wp-playlist">{playlist}</p>;
+              })}
+            </div>
           </div>
 
           <div className="wp-sidebar-img-block">
@@ -360,46 +335,56 @@ export default function App() {
                         )}
                         <p className="wp-table-num highlight">{index + 1}</p>
                       </td>
+
                       <td className="wp-table-song">
                         <img src={song.img} className="wp-table-img" />
+
                         <div className="wp-table-song-info">
-                          {song.name === currentSong.name && (
-                            <div className="highlighted"></div>
-                          )}
-                          <p className="wp-table-song-name highlight">
-                            {song.name}
-                          </p>
-                          <p className="wp-table-song-artist media-link song-highlight">
+                          <div className="wp-table-song-name">
+                            {song.name === currentSong.name && (
+                              <div className="highlighted"></div>
+                            )}
+                            <p className="highlight">{song.name}</p>
+                          </div>
+
+                          <p className="wp-table-song-artist media-link song-hover">
                             {song.artist}
                           </p>
                         </div>
                       </td>
 
+                      <td className="">
+                        {song.name === currentSong.name && (
+                          <div className="highlighted"></div>
+                        )}
+                        <p className="wp-table-num highlight">{index + 1}</p>
+                      </td>
+
                       <td>
-                        <p className="media-link song-highlight">
-                          {song.album}
-                        </p>
+                        <p className="media-link song-hover">{song.album}</p>
                       </td>
 
                       <td className="wp-table-dur">
-                        {favorites.includes(song.id) ? (
-                          <HeartSong
-                            addToFavorites={addToFavorites}
-                            currentSong={song}
-                            favorites={favorites}
-                          />
-                        ) : (
-                          <HeartSong
-                            addToFavorites={addToFavorites}
-                            currentSong={song}
-                            favorites={favorites}
-                            className="hidden"
-                          />
-                        )}
+                        <div className="flex-c">
+                          {favorites.includes(song.id) ? (
+                            <HeartSong
+                              addToFavorites={addToFavorites}
+                              currentSong={song}
+                              favorites={favorites}
+                            />
+                          ) : (
+                            <HeartSong
+                              addToFavorites={addToFavorites}
+                              currentSong={song}
+                              favorites={favorites}
+                              className="hidden"
+                            />
+                          )}
+                        </div>
 
-                        <p className="">1:26</p>
+                        <p className="flex-c">1:26</p>
                         <i
-                          className="fa-solid fa-ellipsis song-more-btn hidden"
+                          className="fa-solid fa-ellipsis song-more-btn hidden flex-c"
                           title={`More options for ${song.name} by ${song.artist}`}
                         ></i>
                       </td>
@@ -514,5 +499,3 @@ export default function App() {
     </div>
   );
 }
-
-

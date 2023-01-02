@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
 
 :root {
   --clr-font: #fcfcfc;
   --clr-font-accent: #aaaaaa;
   --clr-bg: #181818;
   --clr-accent: #1fdf64;
-  --clr-btn: #BABABA;
+  --clr-btn: #bababa;
   --clr-border: #282828;
 }
 
@@ -25,7 +25,6 @@ body {
   font-family: sans-serif;
 }
 
-
 button {
   /* cursor: pointer; */
 }
@@ -34,14 +33,13 @@ img {
   max-width: 100%;
 }
 
-
 body {
   background-image: linear-gradient(
     0deg,
     rgb(18, 65, 14) 23.8%,
     rgb(7, 7, 7) 92%
   );
-    /* background-image: linear-gradient(
+  /* background-image: linear-gradient(
     0deg,
     rgb(34, 39, 101) 23.8%,
     rgb(17, 3, 47) 92%
@@ -52,12 +50,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   margin: 0;
   font-size: 16px;
 }
-
-
 
 .left {
   text-align: left;
@@ -69,8 +65,16 @@ body {
   text-align: right;
 }
 .hidden {
-    opacity: 0;
+  opacity: 0;
 }
+.flex-c {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
 
 
 
@@ -85,12 +89,6 @@ body {
   transition: width 0.1s linear;
 }
 
-
-
-
-
-
-
 .media-btn {
   background-color: inherit;
   border: 0;
@@ -100,8 +98,7 @@ body {
   /* padding: 10px; */
   text-align: center;
   transition: all 100ms;
-    font-size: 1.2rem;
-
+  font-size: 1.2rem;
 }
 
 .media-btn-big {
@@ -119,14 +116,12 @@ body {
   color: var(--clr-font);
 }
 
-
 .heart-btn {
   background-color: inherit;
   border: none;
   color: var(--clr-btn);
   font-size: 1.1rem;
   transition: all 100ms;
-
 }
 
 .heart-btn:hover {
@@ -136,26 +131,18 @@ body {
   outline: none;
 }
 
-.highlighted {
-    color: var(--clr-accent);
-}
-
-
-
-
 
 
 /* WEB PLAYER */
 
-
 /* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap'); */
 
 .WebPlayer {
-    width: 100vw;
-    height: 100vh;
-    /* overflow-x: hidden; */
+  width: 100vw;
+  height: 100vh;
+  /* overflow-x: hidden; */
 
-      /* width: 600px; */
+  /* width: 600px; */
   background-color: var(--clr-bg);
   border-radius: 10px;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.479);
@@ -165,22 +152,15 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  --footer-height: 95px;
 }
-
-
 
 .wp-main {
   display: flex;
   justify-content: flex-start;
-        flex-grow: 1;
-
+  flex-grow: 1;
+  height: calc(100vh - var(--footer-height));
 }
-
-
-
-
-
-
 
 /* SIDEBAR */
 .wp-main-sidebar {
@@ -192,22 +172,28 @@ body {
   flex-direction: column;
   justify-content: space-between;
 
-    position: relative;
-
+  position: relative;
 }
-
 
 .wp-sidebar-dir {
   padding: 1em 2em;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   gap: 1.4em;
   color: var(--clr-font-accent);
-  font-size: .85rem;
+  font-size: 0.85rem;
   font-weight: 600;
   /* overflow-y: scroll; */
 }
 
+.wp-sidebar-playlists {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2em;
+  overflow-y: hidden;
+  height: 100%;
+}
 
 .wp-sidebar-tab {
   display: flex;
@@ -215,14 +201,14 @@ body {
   justify-content: flex-start;
   gap: 1.2em;
   cursor: pointer;
-    /* padding: 1em 2em; */
-    transition: color 200ms;
-    padding: 0em .4em;
-    color: inherit;
-    background-color: inherit;
-    font-weight: inherit;
-    border: none;
-    padding: 0;
+  /* padding: 1em 2em; */
+  transition: color 200ms;
+  padding: 0em 0.4em;
+  color: inherit;
+  background-color: inherit;
+  font-weight: inherit;
+  border: none;
+  padding: 0;
 }
 .wp-sidebar-tab:hover {
   color: var(--clr-font);
@@ -233,9 +219,8 @@ body {
   text-align: center;
 }
 .hr-border {
-  border: .1em solid var(--clr-border);
+  border: 0.1em solid var(--clr-border);
 }
-
 
 .wp-playlist {
   color: var(--clr-font-accent);
@@ -251,35 +236,26 @@ body {
 .wp-sidebar-img-block {
   /* position: absolute; */
   bottom: 0;
-
 }
 .wp-sidebar-img {
   width: 100%;
-
+  aspect-ratio: 1;
 }
-
-
 
 /* MAIN CONTENT */
 
 .wp-main-content {
   width: 100%;
-    background-color: #121212;
-
-
+  background-color: #121212;
 }
 .wp-list-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1em 2em;
-    max-width: 1900px;
-
+  max-width: 1900px;
 }
 
-.highlighted + .highlight {
-  color: #1fdf64;
-}
 
 
 .wp-header-play-btn {
@@ -294,13 +270,10 @@ body {
   padding: 10px;
   text-align: center;
   transition: all 100ms;
-
 }
 .wp-header-play-btn:hover {
   transform: scale(1.05);
 }
-
-
 
 .wp-header-search-btn {
   color: var(--clr-font-accent);
@@ -309,8 +282,6 @@ body {
   font-size: 1.2rem;
   width: 35px;
   aspect-ratio: 1;
-
-
 }
 .wp-header-search-btn:hover {
   color: var(--clr-font);
@@ -318,33 +289,36 @@ body {
   border-radius: 50%;
 }
 
+table {
+  overflow: scroll;
+      border-spacing: 0 50px;
+      padding: 50px;
 
-
-
-
-
+}
 
 /* TABLE */
 .wp-table-wrapper {
   padding: 0em 3.4em;
+  /* height: 100%; */
 }
-
 
 .wp-table {
   width: 100%;
   min-width: 500px;
   max-width: 1900px;
-  padding: 1em 2.4em;
-    font-size: .9rem;
-    color: var(--clr-font-accent);
-      border-collapse: collapse;
+  /* padding: 1em 2.4em; */
+  font-size: 0.9rem;
+  color: var(--clr-font-accent);
+  border-collapse: collapse;
+    /* height: 100%; */
+    /* border-collapse: separate; */
 
 }
 .wp-table-head {
   text-transform: uppercase;
-    border-bottom: 1px solid var(--clr-border);
-    font-size: .8rem;
-    letter-spacing: .05em;
+  border-bottom: 1px solid var(--clr-border);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
 }
 .wp-table-head p {
   width: min-content;
@@ -352,41 +326,52 @@ body {
 
 .wp-table-dur {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-content: center;
   gap: 2em;
   position: absolute;
   right: 0;
+  top: 0;
+  bottom: 0;
+  /* background-color: #13341f; */
+  /* height: 100%; */
 }
 
-.wp-table-dur p{
+
+.wp-table-dur p {
   /* width: 100%; */
 }
 .wp-table-head > tr > td > p:hover {
   color: var(--clr-font);
 }
 
-.wp-table-row {
-  /* padding: 1em; */
-  line-height: 4em;
-  position: relative;
 
+.wp-table-row {
+  padding: 1em;
+  /* line-height: 4em; */
+  position: relative;
+  /* margin: 0.1em; */
 }
 .wp-table-row:hover {
   background-color: #292929;
 }
+td {
+  margin: .5rem 0;
+}
+
 .thead-spacer {
-  margin: .8em 0;
+  margin: 0.8em 0;
 }
 .tbody-spacer {
   margin: 1em 0;
 }
-
-
-.wp-table-row:hover > td .song-highlight{
+.song-hover{
+  width: fit-content;
+}
+.wp-table-row:hover > td .song-hover {
   color: var(--clr-font);
 }
-.wp-table-row:hover > td .hidden{
+.wp-table-row:hover > td .hidden {
   opacity: 1;
 }
 .wp-table-img {
@@ -398,32 +383,47 @@ body {
   justify-content: flex-start;
   align-items: center;
 
-  line-height: 1.4;
-
+  /* line-height: 1.4; */
+    /* background-color: #0a5224; */
+}
+.wp-table-song-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0;
+  gap: .2em;
 }
 
 .wp-table-num {
   font-size: 1rem;
 }
 
-
 .wp-table-song-name {
-    color: var(--clr-font);
-font-size: 1rem;
-
+  color: var(--clr-font);
+  font-size: 1rem;
 }
+
+.highlighted {
+  color: var(--clr-accent);
+}
+
+.highlighted + .highlight {
+  color: var(--clr-accent);
+}
+
+
 
 /* CONTROLS */
 
 .wp-song-name {
-    color: var(--clr-font);
-    font-size: 1rem;
-
+  color: var(--clr-font);
+  font-size: 1rem;
 }
 .wp-song-artist {
   color: var(--clr-font-accent);
-      font-size: .7rem;
-      margin-top: .4em;
+  font-size: 0.7rem;
+  margin-top: 0.4em;
+  width: fit-content;
 
 }
 
@@ -434,27 +434,24 @@ font-size: 1rem;
   background-color: #181818;
   border-top: 1px solid var(--clr-border);
   bottom: 0;
-    padding: .6em 1.6em;
-    height: 95px;
+  padding: 0.6em 1.6em;
+  height: var(--footer-height);
+  z-index: 10;
 
-        /* height: 200px; */
-
-
+  /* height: 200px; */
 }
 .wp-footer-song {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 1.4em;
-    width: 25%;
-
+  width: 25%;
 }
 .wp-footer-main {
   width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 .wp-song-time {
@@ -464,23 +461,20 @@ font-size: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: .4em;
-
+  gap: 0.4em;
 }
 .wp-time {
-  font-size: .7rem;
+  font-size: 0.7rem;
   color: var(--clr-font-accent);
 }
 
 .wp-footer-sub {
-    width: 25%;
-
+  width: 25%;
 }
 
 .wp-volume-bar {
   width: 90px;
 }
-
 
 .media-link:hover {
   text-decoration: underline;
@@ -491,9 +485,6 @@ font-size: 1rem;
   font-size: 1.2rem;
 }
 
-
-
-
 .song-footer {
   display: flex;
   justify-content: flex-start;
@@ -501,15 +492,13 @@ font-size: 1rem;
   margin-top: 1em;
 }
 
-
 .wp-control-panel {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1.4em;
-  margin-bottom: .2em;
+  margin-bottom: 0.2em;
 }
-
 
 .mute-btn {
   background-color: inherit;
@@ -533,9 +522,8 @@ font-size: 1rem;
   align-items: center;
   justify-content: flex-end;
   width: 100%;
-  gap: .1em;
+  gap: 0.1em;
 }
-
 
 .wp-time-bar {
   min-width: 210px;
