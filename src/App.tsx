@@ -329,7 +329,7 @@ export default function App() {
                         selectSong(index);
                       }}
                     >
-                      <td className="">
+                      <td className="test">
                         {song.name === currentSong.name && (
                           <div className="highlighted"></div>
                         )}
@@ -353,12 +353,6 @@ export default function App() {
                         </div>
                       </td>
 
-                      <td className="">
-                        {song.name === currentSong.name && (
-                          <div className="highlighted"></div>
-                        )}
-                        <p className="wp-table-num highlight">{index + 1}</p>
-                      </td>
 
                       <td>
                         <p className="media-link song-hover">{song.album}</p>
@@ -492,6 +486,7 @@ export default function App() {
               percentage={volume}
               onChange={changeVolume}
               audio={audioRef.current}
+              className="wp-volume-bar"
             />
           </div>
         </div>

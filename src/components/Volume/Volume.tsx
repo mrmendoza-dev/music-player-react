@@ -23,30 +23,32 @@ export default function Volume(props: any) {
   }, [props.percentage]);
 
   return (
-    <div className="volume-container">
-      <div
-        className="progress-bar-cover"
-        style={{
-          width: `${progressBarWidth}px`,
-        }}
-      ></div>
-      <div
-        className="thumb"
-        ref={volumeThumbRef}
-        style={{
-          left: `${position}%`,
-          marginLeft: `${marginLeft}px`,
-        }}
-      ></div>
-      <input
-        type="range"
-        value={position}
-        ref={volumeRangeRef}
-        // step="0.01"
-        className="range"
-        onChange={props.onChange}
-      />
-    </div>
+    // <div className={props.className}>
+      <div className="volume-container">
+        <div
+          className="progress-bar-cover"
+          style={{
+            width: `${progressBarWidth}px`,
+          }}
+        ></div>
+        <div
+          className="thumb"
+          ref={volumeThumbRef}
+          style={{
+            left: `${position}%`,
+            marginLeft: `${marginLeft}px`,
+          }}
+        ></div>
+        <input
+          type="range"
+          value={position}
+          ref={volumeRangeRef}
+          // step="0.01"
+          className="range"
+          onChange={props.onChange}
+        />
+      </div>
+    // </div>
   );
 }
 

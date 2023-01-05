@@ -300,6 +300,7 @@ table {
 .wp-table-wrapper {
   padding: 0em 3.4em;
   /* height: 100%; */
+  --border-pad: 1.4em;
 }
 
 .wp-table {
@@ -358,6 +359,21 @@ table {
 td {
   margin: .5rem 0;
 }
+
+.wp-table-head > tr> td:first-child {
+  padding-left: var(--border-pad);
+}
+.wp-table-head > tr> td:last-child {
+  padding-right: var(--border-pad);
+}
+
+.wp-table-row > td:first-child {
+  padding-left: var(--border-pad);
+}
+.wp-table-row > td:last-child {
+  padding-right: var(--border-pad);
+}
+
 
 .thead-spacer {
   margin: 0.8em 0;
@@ -472,9 +488,7 @@ td {
   width: 25%;
 }
 
-.wp-volume-bar {
-  width: 90px;
-}
+
 
 .media-link:hover {
   text-decoration: underline;
@@ -524,9 +538,13 @@ td {
   width: 100%;
   gap: 0.1em;
 }
+.wp-volume-bar {
+  max-width: 90px;
+}
 
 .wp-time-bar {
   min-width: 210px;
   max-width: 620px;
   width: 100%;
 }
+
