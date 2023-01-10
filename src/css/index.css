@@ -73,14 +73,6 @@ body {
   justify-content: center;
 }
 
-
-
-
-
-
-
-
-
 .progress {
   background-color: #8de0fe;
   border-radius: 5px;
@@ -131,8 +123,6 @@ body {
   outline: none;
 }
 
-
-
 /* WEB PLAYER */
 
 /* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap'); */
@@ -165,9 +155,9 @@ body {
 /* SIDEBAR */
 .wp-main-sidebar {
   background-color: #000000;
-  min-width: 130px;
+  min-width: 100px;
   width: 300px;
-  max-width: 400px;
+  /* max-width: 400px; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -256,8 +246,6 @@ body {
   max-width: 1900px;
 }
 
-
-
 .wp-header-play-btn {
   width: 56px;
   aspect-ratio: 1;
@@ -291,9 +279,8 @@ body {
 
 table {
   overflow: scroll;
-      border-spacing: 0 50px;
-      padding: 50px;
-
+  border-spacing: 0 50px;
+  padding: 50px;
 }
 
 /* TABLE */
@@ -311,9 +298,8 @@ table {
   font-size: 0.9rem;
   color: var(--clr-font-accent);
   border-collapse: collapse;
-    /* height: 100%; */
-    /* border-collapse: separate; */
-
+  /* height: 100%; */
+  /* border-collapse: separate; */
 }
 .wp-table-head {
   text-transform: uppercase;
@@ -338,14 +324,12 @@ table {
   /* height: 100%; */
 }
 
-
 .wp-table-dur p {
   /* width: 100%; */
 }
 .wp-table-head > tr > td > p:hover {
   color: var(--clr-font);
 }
-
 
 .wp-table-row {
   padding: 1em;
@@ -357,13 +341,13 @@ table {
   background-color: #292929;
 }
 td {
-  margin: .5rem 0;
+  margin: 0.5rem 0;
 }
 
-.wp-table-head > tr> td:first-child {
+.wp-table-head > tr > td:first-child {
   padding-left: var(--border-pad);
 }
-.wp-table-head > tr> td:last-child {
+.wp-table-head > tr > td:last-child {
   padding-right: var(--border-pad);
 }
 
@@ -374,14 +358,13 @@ td {
   padding-right: var(--border-pad);
 }
 
-
 .thead-spacer {
   margin: 0.8em 0;
 }
 .tbody-spacer {
   margin: 1em 0;
 }
-.song-hover{
+.song-hover {
   width: fit-content;
 }
 .wp-table-row:hover > td .song-hover {
@@ -400,14 +383,14 @@ td {
   align-items: center;
 
   /* line-height: 1.4; */
-    /* background-color: #0a5224; */
+  /* background-color: #0a5224; */
 }
 .wp-table-song-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 0;
-  gap: .2em;
+  gap: 0.2em;
 }
 
 .wp-table-num {
@@ -427,8 +410,6 @@ td {
   color: var(--clr-accent);
 }
 
-
-
 /* CONTROLS */
 
 .wp-song-name {
@@ -440,7 +421,6 @@ td {
   font-size: 0.7rem;
   margin-top: 0.4em;
   width: fit-content;
-
 }
 
 .wp-footer {
@@ -487,8 +467,6 @@ td {
 .wp-footer-sub {
   width: 25%;
 }
-
-
 
 .media-link:hover {
   text-decoration: underline;
@@ -547,4 +525,3 @@ td {
   max-width: 620px;
   width: 100%;
 }
-
