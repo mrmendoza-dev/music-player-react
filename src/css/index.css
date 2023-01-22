@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
 
 :root {
+  color-scheme: dark;
   --clr-font: #fcfcfc;
   --clr-font-accent: #aaaaaa;
   --clr-bg: #181818;
@@ -525,3 +526,14 @@ td {
   max-width: 620px;
   width: 100%;
 }
+
+
+
+
+
+
+@media only screen and (max-width: 400px) {
+  
+}
+
+
