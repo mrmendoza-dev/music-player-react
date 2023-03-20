@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from "react";
-import "./volume.css";
+import { useEffect, useRef, useState } from "react";
+import "./volume.scss";
 
 export default function Volume(props: any) {
   const [position, setPosition] = useState(0);
@@ -24,31 +24,30 @@ export default function Volume(props: any) {
 
   return (
     // <div className={props.className}>
-      <div className="volume-container">
-        <div
-          className="progress-bar-cover"
-          style={{
-            width: `${progressBarWidth}px`,
-          }}
-        ></div>
-        <div
-          className="thumb"
-          ref={volumeThumbRef}
-          style={{
-            left: `${position}%`,
-            marginLeft: `${marginLeft}px`,
-          }}
-        ></div>
-        <input
-          type="range"
-          value={position}
-          ref={volumeRangeRef}
-          // step="0.01"
-          className="range"
-          onChange={props.onChange}
-        />
-      </div>
+    <div className="volume-container">
+      <div
+        className="progress-bar-cover"
+        style={{
+          width: `${progressBarWidth}px`,
+        }}
+      ></div>
+      <div
+        className="thumb"
+        ref={volumeThumbRef}
+        style={{
+          left: `${position}%`,
+          marginLeft: `${marginLeft}px`,
+        }}
+      ></div>
+      <input
+        type="range"
+        value={position}
+        ref={volumeRangeRef}
+        // step="0.01"
+        className="range"
+        onChange={props.onChange}
+      />
+    </div>
     // </div>
   );
 }
-

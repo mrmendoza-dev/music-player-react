@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect, useLayoutEffect } from "react";
-import "./slider.css";
+import { useEffect, useRef, useState } from "react";
+import "./slider.scss";
 
 export default function Slider(props: any) {
   const [position, setPosition] = useState(0);
@@ -8,8 +8,6 @@ export default function Slider(props: any) {
 
   const rangeRef: any = useRef();
   const thumbRef: any = useRef();
-
-
 
   useEffect(() => {
     const rangeWidth = rangeRef.current.getBoundingClientRect().width;
@@ -53,4 +51,3 @@ export default function Slider(props: any) {
     </div>
   );
 }
-

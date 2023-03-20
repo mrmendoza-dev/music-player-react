@@ -1,9 +1,11 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useRef, useState } from "react";
+import Split from "react-split";
+import { icons } from "./assets/icons";
 import Slider from "./components/slider/Slider";
 import Volume from "./components/Volume/Volume";
-import "./css/App.css";
+import "./css/App.scss";
 import { songData } from "./songData";
-import Split from "react-split";
 
 function HeartSong(props: any) {
   return (
@@ -15,12 +17,16 @@ function HeartSong(props: any) {
         }}
       >
         {props.favorites.includes(props.currentSong.id) ? (
-          <i
-            className="fa-solid fa-heart highlighted"
+          <FontAwesomeIcon
+            icon={icons.faHeartFilled}
             title="Remove from Your Library"
-          ></i>
+            className="highlighted"
+          />
         ) : (
-          <i className="fa-regular fa-heart" title="Save to Your Library"></i>
+          <FontAwesomeIcon
+            icon={icons.faHeartEmpty}
+            title="Save to Your Library"
+          />
         )}
       </button>
     </div>
@@ -247,159 +253,165 @@ export default function App() {
         cursor="col-resize"
         className="wp-main"
       >
-          <div className="wp-main-sidebar">
-            <div className="wp-sidebar-dir">
-              <div className="wp-sidebar-tab">
-                <i className="fa-solid fa-ellipsis" id="more-icon"></i>
-              </div>
-              <button className="wp-sidebar-tab">
-                <i className="fa-solid fa-house"></i> <p>Home</p>
-              </button>
-              <button className="wp-sidebar-tab">
-                <i className="fa-solid fa-magnifying-glass"></i> <p>Search</p>
-              </button>
-              <button className="wp-sidebar-tab">
-                <i className="fa-solid fa-book-open"></i> <p>Your Library</p>
-              </button>
-
-              <hr className="hidden" />
-
-              <button className="wp-sidebar-tab" onClick={createPlaylist}>
-                <i className="fa-solid fa-square-plus"></i>
-                <p>Create Playlist</p>
-              </button>
-
-              <button className="wp-sidebar-tab">
-                <i className="fa-solid fa-heart"></i>
-                <p>Liked Songs</p>
-              </button>
-
-              <hr className="hr-border"></hr>
-              <div className="wp-sidebar-playlists">
-                {playlists.map((playlist) => {
-                  return <p className="wp-playlist">{playlist}</p>;
-                })}
-              </div>
+        <div className="wp-main-sidebar">
+          <div className="wp-sidebar-dir">
+            <div className="wp-sidebar-tab">
+              <FontAwesomeIcon icon={icons.faEllipsis} id="more-icon" />
             </div>
+            <button className="wp-sidebar-tab">
+              <FontAwesomeIcon icon={icons.faHouse} />
+              <p>Home</p>
+            </button>
+            <button className="wp-sidebar-tab">
+              <FontAwesomeIcon icon={icons.faMagnifyingGlass} />
+              <p>Search</p>
+            </button>
+            <button className="wp-sidebar-tab">
+              <FontAwesomeIcon icon={icons.faBookOpen} />
+              <p>Your Library</p>
+            </button>
 
-            <div className="wp-sidebar-img-block">
-              <img
-                className="wp-sidebar-img"
-                src={currentSong.img}
-                alt="music-cover"
-                id="cover"
-              />
+            <hr className="hidden" />
+
+            <button className="wp-sidebar-tab" onClick={createPlaylist}>
+              <FontAwesomeIcon icon={icons.faSquarePlus} />
+
+              <p>Create Playlist</p>
+            </button>
+
+            <button className="wp-sidebar-tab">
+              <FontAwesomeIcon icon={icons.faHeartFilled} />
+
+              <p>Liked Songs</p>
+            </button>
+
+            <hr className="hr-border"></hr>
+            <div className="wp-sidebar-playlists">
+              {playlists.map((playlist) => {
+                return <p className="wp-playlist">{playlist}</p>;
+              })}
             </div>
           </div>
 
-          <div className="wp-main-content">
-            <div className="wp-list-header">
-              <div className="">
-                <button
-                  id="play"
-                  className="wp-header-play-btn"
-                  onClick={playSong}
-                >
-                  {isPlaying ? (
-                    <i className="fa-solid fa-circle-pause" title="Pause"></i>
-                  ) : (
-                    <i className="fa-solid fa-circle-play" title="Play"></i>
-                  )}
-                </button>
-              </div>
-              <div className="">
-                <button className="wp-header-search-btn">
-                  <i className="fa-solid fa-magnifying-glass"></i>
-                </button>
-              </div>
+          <div className="wp-sidebar-img-block">
+            <img
+              className="wp-sidebar-img"
+              src={currentSong.img}
+              alt="music-cover"
+              id="cover"
+            />
+          </div>
+        </div>
+
+        <div className="wp-main-content">
+          <div className="wp-list-header">
+            <div className="">
+              <button
+                id="play"
+                className="wp-header-play-btn"
+                onClick={playSong}
+              >
+                {isPlaying ? (
+                  <FontAwesomeIcon icon={icons.faCirclePause} title="Pause" />
+                ) : (
+                  <FontAwesomeIcon icon={icons.faCirclePlay} title="Play" />
+                )}
+              </button>
             </div>
-            <div className="wp-table-wrapper">
-              <table className="wp-table">
-                <thead className="wp-table-head">
-                  <tr>
-                    <td className="left">#</td>
-                    <td className="left">
-                      <p>Title</p>
-                    </td>
-                    <td className="left">
-                      <p>Album</p>
-                    </td>
-                    <td className="right">
-                      <i className="fa-regular fa-clock" title="duration"></i>
-                    </td>
-                  </tr>
-                  <div className="thead-spacer"></div>
-                </thead>
-                <div className="tbody-spacer"></div>
+            <div className="">
+              <button className="wp-header-search-btn">
+                <FontAwesomeIcon icon={icons.faMagnifyingGlass} />
+              </button>
+            </div>
+          </div>
+          <div className="wp-table-wrapper">
+            <table className="wp-table">
+              <thead className="wp-table-head">
+                <tr>
+                  <td className="left">#</td>
+                  <td className="left">
+                    <p>Title</p>
+                  </td>
+                  <td className="left">
+                    <p>Album</p>
+                  </td>
+                  <td className="right">
+                    <FontAwesomeIcon icon={icons.faClock} title="duration" />
+                  </td>
+                </tr>
+                <div className="thead-spacer"></div>
+              </thead>
+              <div className="tbody-spacer"></div>
 
-                <tbody>
-                  {songs.map((song, index) => {
-                    return (
-                      <tr
-                        className="wp-table-row"
-                        onDoubleClick={() => {
-                          selectSong(index);
-                        }}
-                      >
-                        <td className="test">
-                          {song.name === currentSong.name && (
-                            <div className="highlighted"></div>
-                          )}
-                          <p className="wp-table-num highlight">{index + 1}</p>
-                        </td>
+              <tbody>
+                {songs.map((song, index) => {
+                  return (
+                    <tr
+                      className="wp-table-row"
+                      onDoubleClick={() => {
+                        selectSong(index);
+                      }}
+                    >
+                      <td className="test">
+                        {song.name === currentSong.name && (
+                          <div className="highlighted"></div>
+                        )}
+                        <p className="wp-table-num highlight">{index + 1}</p>
+                      </td>
 
-                        <td className="wp-table-song">
-                          <img src={song.img} className="wp-table-img" />
+                      <td className="wp-table-song">
+                        <img src={song.img} className="wp-table-img" />
 
-                          <div className="wp-table-song-info">
-                            <div className="wp-table-song-name">
-                              {song.name === currentSong.name && (
-                                <div className="highlighted"></div>
-                              )}
-                              <p className="highlight">{song.name}</p>
-                            </div>
-
-                            <p className="wp-table-song-artist media-link song-hover">
-                              {song.artist}
-                            </p>
-                          </div>
-                        </td>
-
-                        <td>
-                          <p className="media-link song-hover">{song.album}</p>
-                        </td>
-
-                        <td className="wp-table-dur">
-                          <div className="flex-c">
-                            {favorites.includes(song.id) ? (
-                              <HeartSong
-                                addToFavorites={addToFavorites}
-                                currentSong={song}
-                                favorites={favorites}
-                              />
-                            ) : (
-                              <HeartSong
-                                addToFavorites={addToFavorites}
-                                currentSong={song}
-                                favorites={favorites}
-                                className="hidden"
-                              />
+                        <div className="wp-table-song-info">
+                          <div className="wp-table-song-name">
+                            {song.name === currentSong.name && (
+                              <div className="highlighted"></div>
                             )}
+                            <p className="highlight">{song.name}</p>
                           </div>
 
-                          <p className="flex-c">1:26</p>
-                          <i
-                            className="fa-solid fa-ellipsis song-more-btn hidden flex-c"
-                            title={`More options for ${song.name} by ${song.artist}`}
-                          ></i>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
+                          <p className="wp-table-song-artist media-link song-hover">
+                            {song.artist}
+                          </p>
+                        </div>
+                      </td>
+
+                      <td>
+                        <p className="media-link song-hover">{song.album}</p>
+                      </td>
+
+                      <td className="wp-table-dur">
+                        <div className="flex-c">
+                          {favorites.includes(song.id) ? (
+                            <HeartSong
+                              addToFavorites={addToFavorites}
+                              currentSong={song}
+                              favorites={favorites}
+                            />
+                          ) : (
+                            <HeartSong
+                              addToFavorites={addToFavorites}
+                              currentSong={song}
+                              favorites={favorites}
+                              className="hidden"
+                            />
+                          )}
+                        </div>
+
+                        <p className="flex-c">1:26</p>
+                        <FontAwesomeIcon
+                          icon={icons.faEllipsis}
+                          className="song-more-btn hidden flex-c"
+                          title={`More options for ${song.name} by ${song.artist}`}
+                        />
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
+        </div>
       </Split>
 
       <div className="wp-footer">
@@ -423,7 +435,7 @@ export default function App() {
               style={shuffle ? { color: "var(--clr-accent)" } : {}}
               title={shuffle ? "Disable shuffle" : "Enable shuffle"}
             >
-              <i className="fas fa-shuffle"></i>
+              <FontAwesomeIcon icon={icons.faShuffle} />
             </button>
             <button
               id="prev"
@@ -431,7 +443,7 @@ export default function App() {
               onClick={prevSong}
               title="Previous"
             >
-              <i className="fas fa-backward"></i>
+              <FontAwesomeIcon icon={icons.faBackward} />
             </button>
 
             <button
@@ -440,9 +452,9 @@ export default function App() {
               onClick={playSong}
             >
               {isPlaying ? (
-                <i className="fa-solid fa-circle-pause" title="Pause"></i>
+                <FontAwesomeIcon icon={icons.faCirclePause} title="Pause" />
               ) : (
-                <i className="fa-solid fa-circle-play" title="Play"></i>
+                <FontAwesomeIcon icon={icons.faCirclePlay} title="Play" />
               )}
             </button>
 
@@ -452,7 +464,7 @@ export default function App() {
               onClick={nextSong}
               title="Next"
             >
-              <i className="fas fa-forward"></i>
+              <FontAwesomeIcon icon={icons.faForward} />
             </button>
             <button
               id="repeat"
@@ -461,7 +473,7 @@ export default function App() {
               style={repeat ? { color: "var(--clr-accent)" } : {}}
               title={repeat ? "Disable repeat" : "Enable repeat"}
             >
-              <i className="fas fa-repeat"></i>
+              <FontAwesomeIcon icon={icons.faRepeat} />
             </button>
           </div>
 
@@ -492,11 +504,11 @@ export default function App() {
           <div className="volume-control">
             <button className="mute-btn" onClick={muteVolume} title="Mute">
               {volume >= 50 ? (
-                <i className="fa-solid fa-volume-high"></i>
+                <FontAwesomeIcon icon={icons.faVolumeHigh} />
               ) : volume > 0 ? (
-                <i className="fa-solid fa-volume-low"></i>
+                <FontAwesomeIcon icon={icons.faVolumeLow} />
               ) : (
-                <i className="fa-solid fa-volume-xmark" title="Unmute"></i>
+                <FontAwesomeIcon icon={icons.faVolumeXmark} title="Unmute" />
               )}
             </button>
             <Volume

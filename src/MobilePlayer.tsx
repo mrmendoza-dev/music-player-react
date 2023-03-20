@@ -1,9 +1,11 @@
-import { useState, useEffect, useRef } from "react";
-import './css/App.css'
-import { songData } from "./songData";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useRef, useState } from "react";
+import { icons } from "./assets/icons";
+import ControlPanel from "./components/controls/ControlPanel";
 import Slider from "./components/slider/Slider";
 import Volume from "./components/Volume/Volume";
-import ControlPanel from "./components/controls/ControlPanel";
+import "./css/App.scss";
+import { songData } from "./songData";
 
 export default function App() {
   const [songs, setSongs] = useState(songData);
@@ -12,7 +14,7 @@ export default function App() {
   const [shuffle, setShuffle] = useState(false);
   const [repeat, setRepeat] = useState(false);
   const [favorites, setFavorites] = useState<any>([]);
-  
+
   const [volume, setVolume] = useState(50);
   const [lastVolume, setLastVolume] = useState(50);
 
@@ -22,7 +24,6 @@ export default function App() {
   const [currentTime, setCurrentTime] = useState(0);
 
   const audioRef = useRef<any>(null);
-  
 
   useEffect(() => {
     setSongs(songData);
@@ -30,10 +31,10 @@ export default function App() {
     resetTime();
   }, []);
 
-    useEffect(() => {
-      const audio = audioRef.current;
-      audio.volume = volume / 100;
-        }, [volume]);
+  useEffect(() => {
+    const audio = audioRef.current;
+    audio.volume = volume / 100;
+  }, [volume]);
 
   useEffect(() => {
     setCurrentSong(songs[songIndex]);
@@ -41,8 +42,6 @@ export default function App() {
     setIsPlaying(false);
     resetTime();
   }, [songIndex]);
-
-
 
   function checkFlags() {
     if (repeat) {
@@ -77,7 +76,6 @@ export default function App() {
     }
   }
 
-
   function toggleShuffle() {
     setShuffle((prevFlag) => !prevFlag);
   }
@@ -87,11 +85,11 @@ export default function App() {
   }
 
   function addToFavorites(id: any) {
-    let favoritesList = favorites.splice(0)
+    let favoritesList = favorites.splice(0);
     if (favoritesList.includes(id)) {
       favoritesList = favoritesList.filter((e: any) => e !== id);
     } else {
-    favoritesList.push(id);
+      favoritesList.push(id);
     }
     setFavorites(favoritesList);
   }
@@ -99,7 +97,6 @@ export default function App() {
   function resetTime() {
     setCurrentTime(0);
   }
-
 
   const changeVolume = (e: any) => {
     if (e.target.value < 3) {
@@ -114,17 +111,15 @@ export default function App() {
       setVolume(lastVolume);
     } else {
       setVolume(0);
-      setLastVolume(volume)
+      setLastVolume(volume);
     }
   }
-  
 
   const onChange = (e: any) => {
     const audio = audioRef.current;
     audio.currentTime = (audio.duration / 100) * e.target.value;
     setPercentage(e.target.value);
   };
-
 
   function playSong() {
     const audio = audioRef.current;
@@ -140,9 +135,6 @@ export default function App() {
       audio.pause();
     }
   }
-
-
-
 
   const getCurrDuration = (e: any) => {
     const percent = (
@@ -177,7 +169,6 @@ export default function App() {
       min = `${min}`;
     }
 
-
     if (parseInt(hours, 10) > 0) {
       return `${parseInt(hours, 10)}h ${min}m ${sec}s`;
     } else if (min == 0) {
@@ -210,9 +201,16 @@ export default function App() {
           }}
         >
           {favorites.includes(currentSong.id) ? (
-            <i className="fa-solid fa-heart highlighted"></i>
+            <FontAwesomeIcon
+              icon={icons.faHeartFilled}
+              title="Remove from Your Library"
+              className="highlighted"
+            />
           ) : (
-            <i className="fa-regular fa-heart"></i>
+            <FontAwesomeIcon
+              icon={icons.faHeartEmpty}
+              title="Save to Your Library"
+            />
           )}
         </button>
       </div>
@@ -235,11 +233,9 @@ export default function App() {
         ></audio>
       </div>
 
-
-
       <div className="song-controls">
         <ControlPanel
-          songList = {songs}
+          songList={songs}
           playSong={playSong}
           isPlaying={isPlaying}
           duration={duration}
@@ -256,11 +252,11 @@ export default function App() {
         <div className="volume-control">
           <button className="mute-btn" onClick={muteVolume}>
             {volume >= 50 ? (
-              <i className="fa-solid fa-volume-high"></i>
+              <FontAwesomeIcon icon={icons.faVolumeHigh} />
             ) : volume > 0 ? (
-              <i className="fa-solid fa-volume-low"></i>
+              <FontAwesomeIcon icon={icons.faVolumeLow} />
             ) : (
-              <i className="fa-solid fa-volume-xmark"></i>
+              <FontAwesomeIcon icon={icons.faVolumeXmark} title="Unmute" />
             )}
           </button>
           <Volume
@@ -273,5 +269,3 @@ export default function App() {
     </div>
   );
 }
-
-
