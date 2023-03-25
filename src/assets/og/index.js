@@ -1,6 +1,5 @@
 // import data from "./data.js";
 
-
 const musicContainer = document.getElementById("music-container");
 const playBtn = document.getElementById("play");
 const prevBtn = document.getElementById("prev");
@@ -53,7 +52,7 @@ function roll(min, max, floatFlag) {
 function loadSong(song) {
   title.innerText = song;
   audio.src = `music/${song}.mp3`;
-  cover.src = `album_covers/${song}.jpg`;
+  cover.src = `album_covers/${song}`;
 }
 
 // Play song

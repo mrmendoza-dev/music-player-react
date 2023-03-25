@@ -1,12 +1,10 @@
-
-
 const data = [
   {
     name: "She's on Fire",
     id: "shes-on-fire",
     artist: "Scarface Soundtrack",
     album: "Scarface Soundtrack",
-    image: `${id}.jpg`,
+    image: `${id}`,
     file: `${id}.mp3`,
   },
   {
@@ -14,7 +12,7 @@ const data = [
     id: "out-of-touch",
     artist: "Hall & Oates",
     album: "Scarface Soundtrack",
-    image: `${id}.jpg`,
+    image: `${id}`,
     file: `${id}.mp3`,
   },
   {
@@ -22,11 +20,9 @@ const data = [
     id: "tears-for-fears",
     artist: "Scarface Soundtrack",
     album: "Scarface Soundtrack",
-    image: `${id}.jpg`,
+    image: `${id}`,
     file: `${id}.mp3`,
-  }
+  },
 ];
-
-
 
 export default data;
