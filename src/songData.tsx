@@ -106,15 +106,6 @@ const songData: any[] = [
     mp3: generateSongFileUrl("where-is-my-mind"),
   },
   {
-    id: "turn-out-the-night",
-    name: "Turn Out the Night",
-    artist: "Amy Holland",
-    album: "Scarface",
-    year: "1983",
-    img: generateAlbumCoverUrl("turn-out-the-night"),
-    mp3: generateSongFileUrl("turn-out-the-night"),
-  },
-  {
     id: "just-cant-get-enough",
     name: "Just Can't Get Enough",
     artist: "Depeche Mode",
