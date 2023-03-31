@@ -15,7 +15,7 @@ const songData: any[] = [
     mp3: generateSongFileUrl("shes-on-fire"),
 
   },
-  {
+  { 
     id: "out-of-touch",
     name: "Out of Touch",
     artist: "Hall & Oates",
@@ -31,7 +31,7 @@ const songData: any[] = [
     album: "Scarface",
     year: "1983",
     img: generateAlbumCoverUrl("rush-rush"),
-    mp3: generateSongFileUrl("rush-rush.mp3"),
+    mp3: generateSongFileUrl("rush-rush"),
   },
   {
     id: "boys-dont-cry",
